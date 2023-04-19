@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.databinding.ModuleItemBinding
 
 class ModulesAdapter: RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
-    val moduleList = ArrayList<Modules>()
+    val moduleList = ArrayList<ModulesData>()
     class ModulesHolder(item: View): RecyclerView.ViewHolder(item) {
 
         val binding = ModuleItemBinding.bind(item)
-        fun bind(Module:Modules) = with(binding){
+        fun bind(Module:ModulesData) = with(binding){
             imModule.setImageResource(Module.ImgId)
             txtMainTitle.text = Module.Title
             txtDesc.text = Module.Subtitle
@@ -32,7 +32,7 @@ class ModulesAdapter: RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
         holder.bind(moduleList[position])
     }
 
-    fun addModule(module:Modules){
+    fun addModule(module:ModulesData){
         moduleList.add(module)
         notifyDataSetChanged()
     }

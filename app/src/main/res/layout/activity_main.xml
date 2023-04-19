@@ -4,127 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainTheme"
+    android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/sectionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:fontFamily="@font/alatsi"
+        android:gravity="center"
         android:text="Лекции"
         android:textAlignment="center"
         android:textColor="#151212"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toStartOf="@+id/btFavorite"
+        app:layout_constraintStart_toEndOf="@+id/btProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
     <ImageButton
         android:id="@+id/btProfile"
-        android:layout_width="75dp"
-        android:layout_height="73dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:background="@color/mainTheme"
-        android:src="@drawable/profilepicture"
+        android:background="#00C199CF"
         android:contentDescription="Profile"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/sectionName"
+        android:src="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btFavorite">
+
+        <SearchView
+            android:id="@+id/searchStr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:circularflow_defaultRadius="8px">
+
+        </SearchView>
+    </androidx.cardview.widget.CardView>
+
     <ImageButton
         android:id="@+id/btFavorite"
-        android:layout_width="75dp"
-        android:layout_height="73dp"
-        android:background="@color/mainTheme"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00C199CF"
         android:contentDescription="Favorite"
-        android:src= "@drawable/favorite"
-        app:layout_constraintBottom_toBottomOf="@+id/btProfile"
+        android:src="@drawable/favorite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toEndOf="@+id/sectionName"
-        app:layout_constraintTop_toTopOf="@+id/btProfile"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <SearchView
-        android:id="@+id/searchStr"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardProgress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@color/screenBackground"
-        app:layout_constraintEnd_toEndOf="@+id/btFavorite"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/btProfile"
-        app:layout_constraintTop_toBottomOf="@+id/btProfile">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardSearchBar">
 
-    </SearchView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clProgress"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/buttonBackground"
-        app:layout_constraintEnd_toEndOf="@+id/searchStr"
-        app:layout_constraintStart_toStartOf="@+id/searchStr"
-        app:layout_constraintTop_toBottomOf="@+id/searchStr">
-
-        <TextView
-            android:id="@+id/txtDone"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clProgress"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Выполнено"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.153"
-            />
+            android:background="@color/progressBacground">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="100dp"
-            android:layout_height="150dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/txtDone"
+                android:layout_width="162dp"
+                android:layout_height="39dp"
+                android:text="Выполнено"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/progressBar"
+                app:layout_constraintHorizontal_bias="0.661"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.144" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Вы выполнили x %"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/txtDone"
-            app:layout_constraintStart_toStartOf="@+id/txtDone"
-            app:layout_constraintTop_toBottomOf="@+id/txtDone"
-            />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/btContinue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Продолжить"
-            app:cornerRadius="50px"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="@+id/textView2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Вы выполнили x %"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtDone"
+                app:layout_constraintStart_toStartOf="@+id/txtDone"
+                app:layout_constraintTop_toBottomOf="@+id/txtDone" />
+
+            <Button
+                android:id="@+id/btContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp"
+                android:text="Продолжить"
+                app:cornerRadius="50px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView2"
+                app:layout_constraintHorizontal_bias="0.451"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -133,7 +156,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clProgress">
+        app:layout_constraintTop_toBottomOf="@+id/cardProgress">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"

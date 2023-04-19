@@ -3,19 +3,15 @@ package com.example.firstapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.Toast
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.firstapp.databinding.ActivityLessonsBinding
 import com.example.firstapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class LessonsActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
-    private val adapter = ModulesAdapter()
+    lateinit var binding: ActivityLessonsBinding
+    private val adapter = LessonsAdapter()
     private val ImIdList = listOf(
         R.drawable.plug1,
         R.drawable.plug2,
@@ -28,26 +24,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLessonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
     }
 
     private fun init(){
         binding.apply {
-            rcView.layoutManager = LinearLayoutManager(this@MainActivity)
+            rcView.layoutManager = LinearLayoutManager(this@LessonsActivity)
             rcView.adapter = adapter
             for(index in 0..4){
-                val module = ModulesData(ImIdList[index],
+                val lesson = LessonsData(ImIdList[index],
                     "Module $index",
                     "Subtitle of Module $index")
-                adapter.addModule(module)
+                adapter.addLesson(lesson)
             }
         }
     }
 
-    fun goToModule(view:View){
-        val i = Intent(this, LessonsActivity::class.java)
+    fun goToModule(view: View){
+        val i = Intent(this, LectureActivity::class.java)
         startActivity(i)
 
     }
