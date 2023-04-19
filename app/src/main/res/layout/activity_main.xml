@@ -32,6 +32,7 @@
         android:layout_marginTop="16dp"
         android:background="#00C199CF"
         android:contentDescription="Profile"
+        android:onClick="goToProfile"
         android:scaleType="fitXY"
         android:src="@drawable/profilepicture"
         app:layout_constraintStart_toStartOf="parent"

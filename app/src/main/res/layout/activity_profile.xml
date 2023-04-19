@@ -13,68 +13,137 @@
         android:layout_height="200dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="129dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginEnd="134dp"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="70px"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars[0]" />
+        </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="391dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="50px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" >
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextTextEmailAddress"
+            <TextView
+                android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:text=" Имя"
+                android:textAlignment="textStart"
+                android:textColor="@color/textDescC" />
 
             <EditText
-                android:id="@+id/editTextPhone"
+                android:id="@+id/edTxtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/textDescC"
                 android:ems="10"
-                android:inputType="phone" />
+                android:inputType="textPersonName"
+                android:text="Максим"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtSecName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Фамилия"
+                android:textAlignment="textStart"
+                android:textColor="@color/textDescC" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/edTxtSecName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/textDescC"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="textPersonName"
+                android:text="Шиндяпин"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
+                android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:text="E-mail"
+                android:textColor="@color/textDescC" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="hint" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/edTxtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/textDescC"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:text="test@mail.ru"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
+            <TextView
+                android:id="@+id/txtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Телефон"
+                android:textColor="@color/textDescC" />
+
+            <EditText
+                android:id="@+id/edTxtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/textDescC"
+                android:ems="10"
+                android:inputType="phone"
+                android:text="89806755432"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

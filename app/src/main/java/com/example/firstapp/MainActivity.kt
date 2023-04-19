@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
     fun goToModule(view:View){
         val i = Intent(this, LessonsActivity::class.java)
         startActivity(i)
+    }
 
+    fun goToProfile(view:View){
+        val i = Intent(this, ProfileActivity::class.java)
+        startActivity(i)
     }
 }

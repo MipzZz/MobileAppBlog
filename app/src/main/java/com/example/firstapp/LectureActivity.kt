@@ -2,6 +2,7 @@ package com.example.firstapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import com.example.firstapp.databinding.ActivityLectureBinding
 
