@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="M1MainTitle">
+        <item>Module1.Lec1</item>
+        <item>Module1.Lec2</item>
+        <item>Module1.Lec3</item>
+    </string-array>
+
+    <string-array name="M2MainTitle">
+        <item>Module2.Lec1</item>
+        <item>Module2.Lec2</item>
+    </string-array>
+
+    <string-array name="M3MainTitle">
+        <item>Module3.Lec1</item>
+    </string-array>
+
+    <string-array name="M1MainDesc">
+            <item>Module1.Desc.Lec1</item>
+            <item>Module1.Desc.Lec2</item>
+            <item>Module1.Desc.Lec3</item>
+    </string-array>
+
+    <string-array name="M2MainDesc">
+        <item>Module2.Desc.Lec1</item>
+        <item>Module2.Desc.Lec2</item>
+    </string-array>
+
+    <string-array name="M3MainDesc">
+        <item>Module3.Desc.Lec1</item>
+    </string-array>
+
+
+
+</resources>

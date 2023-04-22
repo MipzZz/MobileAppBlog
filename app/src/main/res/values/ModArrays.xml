@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ModTitle">
+        <item>Module 1</item>
+        <item>Module 2</item>
+        <item>Module 3</item>
+        <item>Module 4</item>
+    </string-array>
+
+
+    <string-array name="ModDesc">
+        <item>Module1.Desc</item>
+        <item>Module2.Desc</item>
+        <item>Module3.Desc</item>
+        <item>Module4.Desc</item>
+    </string-array>
+</resources>

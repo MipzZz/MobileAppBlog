@@ -15,6 +15,7 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
             imModule.setImageResource(Lesson.ImgId)
             txtMainTitle.text = Lesson.Title
             txtDesc.text = Lesson.Desc
+
         }
     }
 
@@ -35,4 +36,5 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
         lessonsList.add(lesson)
         notifyDataSetChanged()
     }
+
 }

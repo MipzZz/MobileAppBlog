@@ -3,19 +3,14 @@ package com.example.firstapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.Toast
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
 
     lateinit var binding: ActivityMainBinding
-    private val adapter = ModulesAdapter()
+    private val adapter = ModulesAdapter(this)
     private val ImIdList = listOf(
         R.drawable.plug1,
         R.drawable.plug2,
@@ -23,36 +18,43 @@ class MainActivity : AppCompatActivity() {
         R.drawable.plug4,
         R.drawable.plug5,
     )
+
     private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         init()
     }
 
     private fun init(){
+        val modTitles = resources.getStringArray(R.array.ModTitle)
+        val modDesc = resources.getStringArray(R.array.ModDesc)
         binding.apply {
             rcView.layoutManager = LinearLayoutManager(this@MainActivity)
             rcView.adapter = adapter
-            for(index in 0..4){
-                val module = ModulesData(ImIdList[index],
-                    "Module $index",
-                    "Subtitle of Module $index")
+            for(index in 0..modTitles.size-1){
+                val module = ModulesData(
+                    ImIdList[index],
+                    modTitles[index],
+                    modDesc[index],
+                    index)
                 adapter.addModule(module)
             }
         }
     }
 
-    fun goToModule(view:View){
-        val i = Intent(this, LessonsActivity::class.java)
-        startActivity(i)
-    }
 
     fun goToProfile(view:View){
         val i = Intent(this, ProfileActivity::class.java)
         startActivity(i)
+    }
+
+    override fun onClick(module: ModulesData) {
+        startActivity(Intent(this, LessonsActivity::class.java).apply {
+            putExtra("numModule", module.Num)
+        })
     }
 }

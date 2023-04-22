@@ -10,9 +10,7 @@ import com.example.firstapp.databinding.ActivityLectureBinding
 
 class LectureActivity : AppCompatActivity() {
     lateinit var binding: ActivityLectureBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityLectureBinding.inflate(layoutInflater)
         setContentView(binding.root)

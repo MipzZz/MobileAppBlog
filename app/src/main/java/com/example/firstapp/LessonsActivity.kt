@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivityLessonsBinding
 import com.example.firstapp.databinding.ActivityMainBinding
 
-class LessonsActivity : AppCompatActivity() {
+class LessonsActivity : AppCompatActivity(){
 
     lateinit var binding: ActivityLessonsBinding
     private val adapter = LessonsAdapter()
@@ -30,13 +30,31 @@ class LessonsActivity : AppCompatActivity() {
     }
 
     private fun init(){
+        val allModTitles = arrayOf(
+            resources.getStringArray(R.array.M1MainTitle),
+            resources.getStringArray(R.array.M2MainTitle),
+            resources.getStringArray(R.array.M3MainTitle),
+        )
+
+        val allModDesc = arrayOf(
+            resources.getStringArray(R.array.M1MainDesc),
+            resources.getStringArray(R.array.M2MainDesc),
+            resources.getStringArray(R.array.M3MainDesc)
+        )
+
+        val numModule = intent.getIntExtra("numModule", 999)
+
+        val modTitles = allModTitles[numModule]
+        val modDesc = allModDesc[numModule]
+
         binding.apply {
             rcView.layoutManager = LinearLayoutManager(this@LessonsActivity)
             rcView.adapter = adapter
-            for(index in 0..4){
-                val lesson = LessonsData(ImIdList[index],
-                    "Module $index",
-                    "Subtitle of Module $index")
+            for(index in 0..modTitles.size - 1){
+                val lesson = LessonsData(
+                    ImIdList[index],
+                   modTitles[index],
+                    modDesc[index])
                 adapter.addLesson(lesson)
             }
         }
@@ -45,6 +63,8 @@ class LessonsActivity : AppCompatActivity() {
     fun goToModule(view: View){
         val i = Intent(this, LectureActivity::class.java)
         startActivity(i)
-
     }
+
+
+
 }

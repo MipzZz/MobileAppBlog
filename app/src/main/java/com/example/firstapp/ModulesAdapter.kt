@@ -6,16 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.databinding.ModuleItemBinding
 
-class ModulesAdapter: RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
+class ModulesAdapter(val listener:Listener): RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
     val moduleList = ArrayList<ModulesData>()
     class ModulesHolder(item: View): RecyclerView.ViewHolder(item) {
 
         val binding = ModuleItemBinding.bind(item)
-        fun bind(Module:ModulesData) = with(binding){
-            imModule.setImageResource(Module.ImgId)
-            txtMainTitle.text = Module.Title
-            txtDesc.text = Module.Subtitle
-
+        fun bind(module:ModulesData, listener: Listener) = with(binding){
+            imModule.setImageResource(module.ImgId)
+            txtMainTitle.text = module.Title
+            txtDesc.text = module.Subtitle
+            btMain.setOnClickListener{
+                listener.onClick(module)
+            }
         }
     }
 
@@ -29,11 +31,15 @@ class ModulesAdapter: RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
     }
 
     override fun onBindViewHolder(holder: ModulesHolder, position: Int) {
-        holder.bind(moduleList[position])
+        holder.bind(moduleList[position], listener)
     }
 
     fun addModule(module:ModulesData){
         moduleList.add(module)
         notifyDataSetChanged()
+    }
+
+    interface Listener{
+        fun onClick(module: ModulesData)
     }
 }
