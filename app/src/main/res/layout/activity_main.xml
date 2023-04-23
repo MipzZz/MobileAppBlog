@@ -7,6 +7,16 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imBackMain"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/frHeadMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frHeadMain"
+        app:srcCompat="@drawable/drwback" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSearchBar"
         android:layout_width="match_parent"
@@ -129,11 +139,10 @@
         android:id="@+id/frHeadMain"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imBackMain"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>

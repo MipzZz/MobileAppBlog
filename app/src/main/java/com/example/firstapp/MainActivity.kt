@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.imBackMain.setOnClickListener {
+            finish()
+        }
         init()
     }
 

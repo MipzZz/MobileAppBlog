@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivityLessonsBinding
 import com.example.firstapp.databinding.ActivityMainBinding
 
-class LessonsActivity : AppCompatActivity(){
-
+class LessonsActivity : AppCompatActivity() {
+    var lesson = LessonsData(0, "", "", "")
     lateinit var binding: ActivityLessonsBinding
     private val adapter = LessonsAdapter()
     private val ImIdList = listOf(
@@ -21,23 +21,27 @@ class LessonsActivity : AppCompatActivity(){
         R.drawable.plug5,
     )
     private var index = 0
-    private val  lifeData: LifeData by viewModels()
+    private val lifeData: LifeData by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         binding = ActivityLessonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.imBackLess.setOnClickListener {
+            finish()
+        }
         init()
     }
 
     override fun onResume() {
         super.onResume()
         lifeData.title.value = "Уроки"
-        supportFragmentManager.beginTransaction().replace(R.id.frHead, HeadFrag.newInstance()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frHead, HeadFrag.newInstance())
+            .commit()
     }
 
-    private fun init(){
+    private fun init() {
         val allModTitles = arrayOf(
             resources.getStringArray(R.array.M1MainTitle),
             resources.getStringArray(R.array.M2MainTitle),
@@ -50,29 +54,38 @@ class LessonsActivity : AppCompatActivity(){
             resources.getStringArray(R.array.M3MainDesc)
         )
 
+        val allLec = arrayOf(
+            resources.getStringArray(R.array.M1Lecs),
+            resources.getStringArray(R.array.M2Lecs),
+            resources.getStringArray(R.array.M3Lecs)
+        )
+
         val numModule = intent.getIntExtra("numModule", 999)
 
         val modTitles = allModTitles[numModule]
         val modDesc = allModDesc[numModule]
+        val modLec = allLec[numModule]
+
 
         binding.apply {
             rcView.layoutManager = LinearLayoutManager(this@LessonsActivity)
             rcView.adapter = adapter
-            for(index in 0..modTitles.size - 1){
+            for (index in 0..modTitles.size - 1) {
                 val lesson = LessonsData(
                     ImIdList[index],
-                   modTitles[index],
-                    modDesc[index])
+                    modTitles[index],
+                    modDesc[index],
+                    modLec[index]
+                )
                 adapter.addLesson(lesson)
             }
+
         }
     }
 
-    fun goToModule(view: View){
-        val i = Intent(this, LectureActivity::class.java)
-        startActivity(i)
+    fun goTolec(view: View) {
+        startActivity(Intent(this, LectureActivity::class.java).apply {
+            putExtra("Lec", lesson.Lec)
+        })
     }
-
-
-
 }

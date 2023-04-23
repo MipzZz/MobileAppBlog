@@ -19,10 +19,11 @@
             android:layout_gravity="center|top"
             android:fontFamily="@font/gentium_basic"
             android:text="TextView"
+            android:textColor="@color/headColor"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imProfile"
-            app:layout_constraintStart_toEndOf="@+id/imBack"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -35,15 +36,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imBack"
-            android:layout_width="50dp"
-            android:layout_height="38dp"
-            android:layout_gravity="center|top|left"
-            android:src="@drawable/drwback"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

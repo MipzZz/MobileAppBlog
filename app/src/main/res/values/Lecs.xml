@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="M1Lecs">
+        <item>Урок 1 по модулю 1</item>
+        <item>Урок 2 по модулю 1</item>
+        <item>Урок 3 по модулю 1</item>
+    </string-array>
+
+    <string-array name="M2Lecs">
+        <item>Урок 1 по модулю 2</item>
+        <item>Урок 2 по модулю 2</item>
+    </string-array>
+
+    <string-array name="M3Lecs">
+        <item>Урок 1 по модулю 3</item>
+    </string-array>
+
+</resources>

@@ -13,5 +13,13 @@ open class LifeData:ViewModel() {
         MutableLiveData<String>()
     }
 
+    val closeLessons:MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    val closeLec:MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
 
 }

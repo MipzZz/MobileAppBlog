@@ -7,15 +7,26 @@
     android:onClick="onClickFin"
     tools:context=".LectureActivity">
 
+    <ImageView
+        android:id="@+id/imBack"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:onClick="onClickFin"
+        app:layout_constraintBottom_toBottomOf="@+id/frHeadLec"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frHeadLec"
+        app:layout_constraintVertical_bias="0.49"
+        app:srcCompat="@drawable/drwback" />
+
     <FrameLayout
         android:id="@+id/frHeadLec"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imBack"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
@@ -38,7 +49,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txtLec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/TestHTML"

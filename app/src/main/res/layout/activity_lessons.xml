@@ -8,6 +8,16 @@
     tools:context=".LessonsActivity">
 
 
+    <ImageView
+        android:id="@+id/imBackLess"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/frHead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frHead"
+        app:srcCompat="@drawable/drwback" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,11 +49,10 @@
         android:id="@+id/frHead"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imBackLess"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>

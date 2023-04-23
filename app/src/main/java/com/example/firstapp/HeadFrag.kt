@@ -1,10 +1,12 @@
 package com.example.firstapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
@@ -28,11 +30,21 @@ class HeadFrag : Fragment() {
             binding.txtHead.text = it
         }
 
+        binding.imProfile.setOnClickListener {
+            startActivity(Intent(activity, ProfileActivity::class.java))
+        }
+
     }
+
+
+
+
 
     companion object {
 
         @JvmStatic
         fun newInstance() = HeadFrag()
     }
+
+
 }

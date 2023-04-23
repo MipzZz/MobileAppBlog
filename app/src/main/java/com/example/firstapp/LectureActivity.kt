@@ -16,6 +16,8 @@ class LectureActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLectureBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val Lec = intent.getStringExtra("Lec")
+        binding.txtLec.text = Lec
     }
 
     override fun onResume() {
