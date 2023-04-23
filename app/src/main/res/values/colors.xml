@@ -12,4 +12,5 @@
     <color name="mainTheme">#C199CF</color>
     <color name="progressBacground">#F267DC</color>
     <color name="textDescC">#606060</color>
+    <color name="btProgress">#F267D3</color>
  </resources>

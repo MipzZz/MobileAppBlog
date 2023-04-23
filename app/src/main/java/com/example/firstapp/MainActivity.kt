@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
     override fun onResume() {
         super.onResume()
         lifeData.title.value = "Модули"
-        supportFragmentManager.beginTransaction().replace(R.id.frHead, HeadFrag.newInstance()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.frHeadMain, HeadFrag.newInstance()).commit()
     }
 
     private fun init(){

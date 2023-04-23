@@ -14,10 +14,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:cardCornerRadius="8px"
+        app:cardCornerRadius="20px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/frHeadMain">
 
         <SearchView
             android:id="@+id/searchStr"
@@ -35,7 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:cardCornerRadius="12px"
+        app:cardCornerRadius="20px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardSearchBar">
@@ -66,7 +66,7 @@
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -82,7 +82,7 @@
                 android:text="Вы прошли обучение на 100%"
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="17.5sp"
                 app:layout_constraintEnd_toStartOf="@+id/progressBar"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/txtDone"
@@ -94,7 +94,9 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
+                android:backgroundTint="@color/white"
                 android:text="Продолжить"
+                android:textColor="@color/btProgress"
                 app:cornerRadius="50px"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/progressBar"
@@ -124,7 +126,7 @@
     </ScrollView>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frHeadMain"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"

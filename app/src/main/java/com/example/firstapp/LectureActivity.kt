@@ -21,6 +21,7 @@ class LectureActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         lifeData.title.value = "Урок"
+        supportFragmentManager.beginTransaction().replace(R.id.frHeadLec, HeadFrag.newInstance()).commit()
     }
 
     fun onClickFin (view: View){
