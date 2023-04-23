@@ -29,6 +29,10 @@ class LessonsActivity : AppCompatActivity(){
         init()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun init(){
         val allModTitles = arrayOf(
             resources.getStringArray(R.array.M1MainTitle),

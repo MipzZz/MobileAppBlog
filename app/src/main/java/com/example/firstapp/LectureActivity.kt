@@ -16,6 +16,10 @@ class LectureActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     fun onClickFin (view: View){
         finish()
     }

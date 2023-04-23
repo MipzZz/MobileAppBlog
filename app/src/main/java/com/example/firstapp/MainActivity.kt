@@ -29,6 +29,10 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
         init()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun init(){
         val modTitles = resources.getStringArray(R.array.ModTitle)
         val modDesc = resources.getStringArray(R.array.ModDesc)
