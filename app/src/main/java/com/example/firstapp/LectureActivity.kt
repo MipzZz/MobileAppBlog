@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.view.View
+import androidx.activity.viewModels
 import com.example.firstapp.databinding.ActivityLectureBinding
 
 
 
 class LectureActivity : AppCompatActivity() {
     lateinit var binding: ActivityLectureBinding
+    private val  lifeData: LifeData by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLectureBinding.inflate(layoutInflater)
@@ -18,6 +20,7 @@ class LectureActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        lifeData.title.value = "Урок"
     }
 
     fun onClickFin (view: View){

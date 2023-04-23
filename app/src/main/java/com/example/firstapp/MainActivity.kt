@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivityMainBinding
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
     )
 
     private var index = 0
-
+    private val  lifeData: LifeData by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
 
     override fun onResume() {
         super.onResume()
+        lifeData.title.value = "Модули"
+        supportFragmentManager.beginTransaction().replace(R.id.frHead, HeadFrag.newInstance()).commit()
     }
 
     private fun init(){

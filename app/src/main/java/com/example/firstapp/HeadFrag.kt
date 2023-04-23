@@ -5,20 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import com.example.firstapp.databinding.FragmentHeadBinding
 
 
 class HeadFrag : Fragment() {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val lifeData: LifeData by activityViewModels()
+    lateinit var binding: FragmentHeadBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_head, container, false)
+        binding = FragmentHeadBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        lifeData.title.observe(activity as LifecycleOwner) {
+            binding.txtHead.text = it
+        }
+
     }
 
     companion object {

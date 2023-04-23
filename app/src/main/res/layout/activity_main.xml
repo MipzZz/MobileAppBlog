@@ -7,38 +7,6 @@
     android:background="@drawable/gradient_background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/sectionName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:gravity="center"
-        android:text="Лекции"
-        android:textAlignment="center"
-        android:textColor="#151212"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toStartOf="@+id/btFavorite"
-        app:layout_constraintStart_toEndOf="@+id/btProfile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />
-
-    <ImageButton
-        android:id="@+id/btProfile"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:background="#00C199CF"
-        android:contentDescription="Profile"
-        android:onClick="goToProfile"
-        android:scaleType="fitXY"
-        android:src="@drawable/profilepicture"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSearchBar"
         android:layout_width="match_parent"
@@ -49,7 +17,7 @@
         app:cardCornerRadius="8px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btFavorite">
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
         <SearchView
             android:id="@+id/searchStr"
@@ -59,18 +27,6 @@
 
         </SearchView>
     </androidx.cardview.widget.CardView>
-
-    <ImageButton
-        android:id="@+id/btFavorite"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="#00C199CF"
-        android:contentDescription="Favorite"
-        android:src="@drawable/favorite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardProgress"
@@ -123,7 +79,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="left"
                 android:text="Вы прошли обучение на 100%"
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
@@ -167,5 +122,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
