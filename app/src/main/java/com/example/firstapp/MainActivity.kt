@@ -11,6 +11,7 @@ import com.example.firstapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
 
     lateinit var binding: ActivityMainBinding
+
     private val adapter = ModulesAdapter(this)
     private val ImIdList = listOf(
         R.drawable.plug1,
@@ -19,9 +20,8 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
         R.drawable.plug4,
         R.drawable.plug5,
     )
-
     private var index = 0
-    private val  lifeData: LifeData by viewModels()
+    private val lifeData: LifeData by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +30,20 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
             finish()
         }
         init()
+
+        binding.bottNav.setOnNavigationItemReselectedListener {
+            when(it.itemId){
+                R.id.it1mod -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.it2abc -> {
+                    startActivity(Intent(this, AbcActivity::class.java))
+                }
+                R.id.it3test -> {
+                   // startActivity(Intent(this, TestActivity::class.java))
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -54,8 +68,6 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
             }
         }
     }
-
-
 
     override fun onClick(module: ModulesData) {
         startActivity(Intent(this, LessonsActivity::class.java).apply {
