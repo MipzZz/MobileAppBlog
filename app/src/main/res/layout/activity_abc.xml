@@ -8,23 +8,23 @@
     tools:context=".AbcActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imBackAbc"
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/frHeadAbc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="@+id/frHeadAbc"
         app:srcCompat="@drawable/drwback" />
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frHeadAbc"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imBackAbc"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/frHeadAbc">
 
         <LinearLayout
             android:layout_width="match_parent"

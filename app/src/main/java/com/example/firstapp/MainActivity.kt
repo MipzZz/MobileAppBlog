@@ -62,4 +62,8 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
             putExtra("numModule", module.Num)
         })
     }
+
+    fun goToAbc(view:View){
+        startActivity(Intent(this, AbcActivity::class.java))
+    }
 }
