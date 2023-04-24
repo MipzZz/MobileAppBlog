@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Abc">
+        <item>Определение 1 - Описание 1</item>
+        <item>Определение 2 - Описание 2</item>
+        <item>Определение 3 - Описание 3</item>
+        <item>Определение 4 - Описание 4</item>
+        <item>Определение 5 - Описание 5</item>
+        <item>Определение 6 - Описание 6</item>
+        <item>Определение 7 - Описание 7</item>
+        <item>Определение 8 - Описание 8</item>
+    </string-array>
+</resources>
