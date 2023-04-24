@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivityLessonsBinding
 import com.example.firstapp.databinding.ActivityMainBinding
 
-class LessonsActivity : AppCompatActivity() {
+class LessonsActivity : AppCompatActivity(), LessonsAdapter.Listener {
     var lesson = LessonsData(0, "", "", "")
     lateinit var binding: ActivityLessonsBinding
-    private val adapter = LessonsAdapter()
+    private val adapter = LessonsAdapter(this)
     private val ImIdList = listOf(
         R.drawable.plug1,
         R.drawable.plug2,
@@ -83,7 +83,7 @@ class LessonsActivity : AppCompatActivity() {
         }
     }
 
-    fun goTolec(view: View) {
+    override fun onClick(lesson: LessonsData) {
         startActivity(Intent(this, LectureActivity::class.java).apply {
             putExtra("Lec", lesson.Lec)
         })

@@ -56,10 +56,6 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
     }
 
 
-    fun goToProfile(view:View){
-        val i = Intent(this, ProfileActivity::class.java)
-        startActivity(i)
-    }
 
     override fun onClick(module: ModulesData) {
         startActivity(Intent(this, LessonsActivity::class.java).apply {

@@ -6,15 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firstapp.databinding.ModuleItemBinding
 
-class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
+class LessonsAdapter(val listener:Listener) : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
     val lessonsList = ArrayList<LessonsData>()
     class LessonsHolder(item: View): RecyclerView.ViewHolder(item) {
 
         val binding = ModuleItemBinding.bind(item)
-        fun bind(Lesson:LessonsData) = with(binding){
+        fun bind(Lesson:LessonsData, listener:Listener) = with(binding){
             imModule.setImageResource(Lesson.ImgId)
             txtMainTitle.text = Lesson.Title
             txtDesc.text = Lesson.Desc
+            btMain.setOnClickListener {
+                listener.onClick(Lesson)
+            }
         }
     }
 
@@ -28,12 +31,16 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
     }
 
     override fun onBindViewHolder(holder: LessonsHolder, position: Int) {
-        holder.bind(lessonsList[position])
+        holder.bind(lessonsList[position],listener)
     }
 
     fun addLesson(lesson:LessonsData){
         lessonsList.add(lesson)
         notifyDataSetChanged()
+    }
+
+    interface Listener{
+        fun onClick(lesson:LessonsData)
     }
 
 }

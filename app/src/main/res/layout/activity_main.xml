@@ -12,31 +12,11 @@
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/frHeadMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/frHeadMain"
         app:srcCompat="@drawable/drwback" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardSearchBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="20px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frHeadMain">
-
-        <SearchView
-            android:id="@+id/searchStr"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:circularflow_defaultRadius="8px">
-
-        </SearchView>
-    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardProgress"
@@ -45,10 +25,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:cardCornerRadius="20px"
+        app:cardCornerRadius="30px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardSearchBar">
+        app:layout_constraintTop_toBottomOf="@+id/frHeadMain">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clProgress"
