@@ -85,7 +85,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp"
                 android:backgroundTint="@color/white"
-                android:onClick="goToAbc"
                 android:text="Продолжить"
                 android:textColor="@color/btProgress"
                 app:cornerRadius="50px"

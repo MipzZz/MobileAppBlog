@@ -11,13 +11,13 @@
     <ImageView
         android:id="@+id/imBack"
         android:layout_width="50dp"
-        android:layout_height="30dp"
+        android:layout_height="36dp"
         android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
         android:onClick="onClickFin"
         app:layout_constraintBottom_toBottomOf="@+id/frHeadLec"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/frHeadLec"
-        app:layout_constraintVertical_bias="0.49"
         app:srcCompat="@drawable/drwback" />
 
     <FrameLayout
@@ -33,6 +33,7 @@
     </FrameLayout>
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -57,13 +58,15 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btTest"
                 android:layout_width="127dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="148dp"
+                android:layout_marginTop="100dp"
                 android:layout_marginEnd="149dp"
                 android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/buttonBackground"
                 android:text="Button" />
 
         </LinearLayout>

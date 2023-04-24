@@ -13,6 +13,7 @@
         android:layout_width="50dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/frHead"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/frHead"
