@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
         binding.imBackMain.setOnClickListener {
             finish()
         }
+        binding.btContinue.setOnClickListener {
+            startActivity(Intent(this, TestNavActivity::class.java))
+        }
         init()
 
         }

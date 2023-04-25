@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FirstApp"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.TestNavActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.AbcActivity"
             android:exported="false" />
         <activity

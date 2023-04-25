@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mainActivity"
+        android:id="@+id/moduleFrag"
         android:title="Лекции"
         android:icon="@drawable/bot1"
         android:orderInCategory="1"
         />
 
     <item
-        android:id="@+id/abcActivity"
+        android:id="@+id/abcFrag"
         android:title="Азбука Визажа"
         android:icon="@drawable/bot2"
         android:orderInCategory="2"
         />
 
     <item
-        android:id="@+id/testActivity"
+        android:id="@+id/testFrag"
         android:title="Тесты"
         android:icon="@drawable/bot3"
         android:orderInCategory="3"

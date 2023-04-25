@@ -6,22 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.firstapp.R
+import com.example.firstapp.databinding.FragmentAbcBinding
 
 
 class AbcFrag : Fragment() {
-
+    lateinit var binding: FragmentAbcBinding
 
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_abc, container, false)
+        binding = FragmentAbcBinding.inflate(inflater)
+        return binding.root
+
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance() = AbcFrag()
     }
+
 }
