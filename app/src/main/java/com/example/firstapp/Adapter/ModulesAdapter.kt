@@ -1,17 +1,19 @@
-package com.example.firstapp
+package com.example.firstapp.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapp.ModulesData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ModuleItemBinding
 
-class ModulesAdapter(val listener:Listener): RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
+class ModulesAdapter(val listener: Listener): RecyclerView.Adapter<ModulesAdapter.ModulesHolder>() {
     val moduleList = ArrayList<ModulesData>()
     class ModulesHolder(item: View): RecyclerView.ViewHolder(item) {
 
         val binding = ModuleItemBinding.bind(item)
-        fun bind(module:ModulesData, listener: Listener) = with(binding){
+        fun bind(module: ModulesData, listener: Listener) = with(binding){
             imModule.setImageResource(module.ImgId)
             txtMainTitle.text = module.Title
             txtDesc.text = module.Subtitle
@@ -34,7 +36,7 @@ class ModulesAdapter(val listener:Listener): RecyclerView.Adapter<ModulesAdapter
         holder.bind(moduleList[position], listener)
     }
 
-    fun addModule(module:ModulesData){
+    fun addModule(module: ModulesData){
         moduleList.add(module)
         notifyDataSetChanged()
     }

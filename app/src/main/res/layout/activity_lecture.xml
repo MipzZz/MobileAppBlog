@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:onClick="onClickFin"
     android:background="@drawable/gradient_background"
-    tools:context=".LectureActivity">
+    tools:context=".Activity.LectureActivity">
 
     <ImageView
         android:id="@+id/imBack"

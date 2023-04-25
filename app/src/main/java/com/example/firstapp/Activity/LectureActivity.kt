@@ -1,10 +1,12 @@
-package com.example.firstapp
+package com.example.firstapp.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import androidx.activity.viewModels
+import com.example.firstapp.HeadFrag
+import com.example.firstapp.LifeData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityLectureBinding
 
 

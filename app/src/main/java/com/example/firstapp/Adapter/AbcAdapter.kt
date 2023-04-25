@@ -1,9 +1,11 @@
-package com.example.firstapp
+package com.example.firstapp.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapp.AbcData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.AbcItemBinding
 
 
@@ -12,7 +14,7 @@ class AbcAdapter():RecyclerView.Adapter<AbcAdapter.AbcHolder>(){
 
     class AbcHolder(item: View):RecyclerView.ViewHolder(item) {
         val binding = AbcItemBinding.bind(item)
-        fun bind (abcItem:AbcData) = with(binding){
+        fun bind (abcItem: AbcData) = with(binding){
             txtLetter.text = abcItem.Letter.toString()
             txtLetDecs.text = abcItem.Desc
         }
@@ -32,7 +34,7 @@ class AbcAdapter():RecyclerView.Adapter<AbcAdapter.AbcHolder>(){
         holder.bind(abcList[position])
     }
 
-    fun addAbc(abcItem:AbcData){
+    fun addAbc(abcItem: AbcData){
         abcList.add(abcItem)
         notifyDataSetChanged()
     }

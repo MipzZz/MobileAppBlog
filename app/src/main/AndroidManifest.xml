@@ -12,19 +12,19 @@
         android:theme="@style/Theme.FirstApp"
         tools:targetApi="31">
         <activity
-            android:name=".AbcActivity"
+            android:name=".Activity.AbcActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activity.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".LectureActivity"
+            android:name=".Activity.LectureActivity"
             android:exported="false" />
         <activity
-            android:name=".LessonsActivity"
+            android:name=".Activity.LessonsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

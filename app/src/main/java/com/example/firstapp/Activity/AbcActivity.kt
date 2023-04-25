@@ -1,9 +1,14 @@
-package com.example.firstapp
+package com.example.firstapp.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.firstapp.Adapter.AbcAdapter
+import com.example.firstapp.AbcData
+import com.example.firstapp.HeadFrag
+import com.example.firstapp.LifeData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityAbcBinding
 
 class AbcActivity : AppCompatActivity() {

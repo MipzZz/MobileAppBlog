@@ -1,13 +1,16 @@
-package com.example.firstapp
+package com.example.firstapp.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.firstapp.HeadFrag
+import com.example.firstapp.Adapter.LessonsAdapter
+import com.example.firstapp.LessonsData
+import com.example.firstapp.LifeData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityLessonsBinding
-import com.example.firstapp.databinding.ActivityMainBinding
 
 class LessonsActivity : AppCompatActivity(), LessonsAdapter.Listener {
     var lesson = LessonsData(0, "", "", "")

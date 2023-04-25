@@ -1,17 +1,19 @@
-package com.example.firstapp
+package com.example.firstapp.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapp.LessonsData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ModuleItemBinding
 
-class LessonsAdapter(val listener:Listener) : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
+class LessonsAdapter(val listener: Listener) : RecyclerView.Adapter<LessonsAdapter.LessonsHolder>() {
     val lessonsList = ArrayList<LessonsData>()
     class LessonsHolder(item: View): RecyclerView.ViewHolder(item) {
 
         val binding = ModuleItemBinding.bind(item)
-        fun bind(Lesson:LessonsData, listener:Listener) = with(binding){
+        fun bind(Lesson: LessonsData, listener: Listener) = with(binding){
             imModule.setImageResource(Lesson.ImgId)
             txtMainTitle.text = Lesson.Title
             txtDesc.text = Lesson.Desc
@@ -34,13 +36,13 @@ class LessonsAdapter(val listener:Listener) : RecyclerView.Adapter<LessonsAdapte
         holder.bind(lessonsList[position],listener)
     }
 
-    fun addLesson(lesson:LessonsData){
+    fun addLesson(lesson: LessonsData){
         lessonsList.add(lesson)
         notifyDataSetChanged()
     }
 
     interface Listener{
-        fun onClick(lesson:LessonsData)
+        fun onClick(lesson: LessonsData)
     }
 
 }

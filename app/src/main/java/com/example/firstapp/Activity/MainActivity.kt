@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.firstapp.HeadFrag
+import com.example.firstapp.LifeData
+import com.example.firstapp.Adapter.ModulesAdapter
+import com.example.firstapp.ModulesData
+import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
@@ -31,20 +36,8 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
         }
         init()
 
-        binding.bottNav.setOnNavigationItemReselectedListener {
-            when(it.itemId){
-                R.id.it1mod -> {
-                    startActivity(Intent(this, MainActivity::class.java))
-                }
-                R.id.it2abc -> {
-                    startActivity(Intent(this, AbcActivity::class.java))
-                }
-                R.id.it3test -> {
-                   // startActivity(Intent(this, TestActivity::class.java))
-                }
-            }
         }
-    }
+
 
     override fun onResume() {
         super.onResume()
