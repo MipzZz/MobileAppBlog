@@ -16,9 +16,7 @@ class TestNavActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTestNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         navController = findNavController(R.id.fragmentContainerView)
-
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 }
