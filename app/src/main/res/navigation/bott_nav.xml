@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bott_nav"
     app:startDestination="@id/moduleFrag">
+
     <fragment
         android:id="@+id/moduleFrag"
         android:name="com.example.firstapp.Fragments.ModuleFrag"
         android:label="fragment_module"
-        tools:layout="@layout/fragment_module" />
+        tools:layout="@layout/fragment_module"/>
+
     <fragment
         android:id="@+id/abcFrag"
         android:name="com.example.firstapp.Fragments.AbcFrag"
         android:label="fragment_abc"
-        tools:layout="@layout/fragment_abc" />
+        tools:layout="@layout/fragment_abc"/>
+
     <fragment
         android:id="@+id/testFrag"
         android:name="com.example.firstapp.Fragments.TestFrag"
         android:label="fragment_test"
-        tools:layout="@layout/fragment_test" />
+        tools:layout="@layout/fragment_test"/>
 </navigation>
