@@ -92,6 +92,6 @@ class LessonsFrag : Fragment(), LessonsAdapter.Listener {
     }
 
     override fun onClick(lesson: LessonsData) {
-        TODO("Not yet implemented")
+        dynamicObjects.dynamicLesson.value = lesson
     }
 }

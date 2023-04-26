@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.firstapp.HeadFrag
+import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentLectureBinding
@@ -16,6 +17,7 @@ class LectureFrag : Fragment() {
 
     lateinit var binding: FragmentLectureBinding
     private val lifeData: LifeData by activityViewModels()
+    private val dynamicObject: DynamicObjects by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +34,7 @@ class LectureFrag : Fragment() {
 
         childFragmentManager.beginTransaction().replace(R.id.frHeadLect, HeadFrag.newInstance()).commit()
 
+        binding.txtLecture.text = dynamicObject.dynamicLesson.value!!.Lec
     }
 
 

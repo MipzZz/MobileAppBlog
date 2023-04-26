@@ -30,5 +30,14 @@
         android:id="@+id/lessonsFrag"
         android:name="com.example.firstapp.Fragments.LessonsFrag"
         android:label="fragment_lessons"
-        tools:layout="@layout/fragment_lessons" />
+        tools:layout="@layout/fragment_lessons" >
+        <action
+            android:id="@+id/action_lessonsFrag_to_lectureFrag"
+            app:destination="@id/lectureFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectureFrag"
+        android:name="com.example.firstapp.Fragments.LectureFrag"
+        android:label="fragment_lecture"
+        tools:layout="@layout/fragment_lecture" />
 </navigation>

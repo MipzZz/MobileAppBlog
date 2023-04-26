@@ -35,6 +35,10 @@ class NavHostActivity : AppCompatActivity(){
             navController.navigate(R.id.lessonsFrag)
         }
 
+        dynamicObject.dynamicLesson.observe(this){
+            navController.navigate(R.id.lectureFrag)
+        }
+
         transition.goBack.observe(this){
             navController.popBackStack()
         }
