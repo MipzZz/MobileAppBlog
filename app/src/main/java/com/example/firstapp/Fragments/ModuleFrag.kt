@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
+import com.example.firstapp.DynamicObjects
 
 import com.example.firstapp.ModulesData
 import com.example.firstapp.R
@@ -18,7 +20,7 @@ import com.example.firstapp.databinding.FragmentModuleBinding
 
 class ModuleFrag : Fragment(), ModulesAdapter.Listener {
     lateinit var binding: FragmentModuleBinding
-
+    private val dynamicObject: DynamicObjects by activityViewModels()
     private val ImIdList = listOf(
         R.drawable.plug1,
         R.drawable.plug2,
@@ -64,6 +66,6 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
 
 
     override fun onClick(module: ModulesData) {
-
+        dynamicObject.dynamicModule.value = module
         }
     }

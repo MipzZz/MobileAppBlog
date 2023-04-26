@@ -9,7 +9,11 @@
         android:id="@+id/moduleFrag"
         android:name="com.example.firstapp.Fragments.ModuleFrag"
         android:label="fragment_module"
-        tools:layout="@layout/fragment_module"/>
+        tools:layout="@layout/fragment_module">
+        <action
+            android:id="@+id/action_moduleFrag_to_lessonsFrag"
+            app:destination="@id/lessonsFrag" />
+    </fragment>
 
     <fragment
         android:id="@+id/abcFrag"
@@ -22,4 +26,9 @@
         android:name="com.example.firstapp.Fragments.TestFrag"
         android:label="fragment_test"
         tools:layout="@layout/fragment_test"/>
+    <fragment
+        android:id="@+id/lessonsFrag"
+        android:name="com.example.firstapp.Fragments.LessonsFrag"
+        android:label="fragment_lessons"
+        tools:layout="@layout/fragment_lessons" />
 </navigation>
