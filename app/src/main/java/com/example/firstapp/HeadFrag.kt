@@ -40,7 +40,7 @@ class HeadFrag : Fragment() {
             transition.goBack.value = true
         }
 
-        if (lifeData.state.value == "Модули"){
+        if (lifeData.state.value == "Модули" || lifeData.state.value == "Тесты" || lifeData.state.value == "Азбука Визажа"){
             binding.imBtBack.visibility = View.INVISIBLE
         }
         else{

@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.AbcData
 import com.example.firstapp.Adapter.AbcAdapter
+import com.example.firstapp.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
@@ -33,6 +34,9 @@ class AbcFrag : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         lifeData.state.value = "Азбука Визажа"
+        lifeData.title.value = "Азбука Визажа"
+
+        childFragmentManager.beginTransaction().replace(R.id.frHeadAbc, HeadFrag.newInstance()).commit()
 
         val adapter = AbcAdapter()
         val abcItems = resources.getStringArray(R.array.Abc)
