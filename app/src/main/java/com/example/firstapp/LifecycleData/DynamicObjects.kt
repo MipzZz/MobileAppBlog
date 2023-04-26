@@ -1,7 +1,8 @@
-package com.example.firstapp
+package com.example.firstapp.LifecycleData
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.firstapp.ModulesData
 
 class DynamicObjects:ViewModel() {
 

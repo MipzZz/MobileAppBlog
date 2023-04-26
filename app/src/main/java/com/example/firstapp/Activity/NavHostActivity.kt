@@ -6,23 +6,22 @@ import android.util.Log
 import androidx.activity.viewModels
 
 
-
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 
 import androidx.navigation.ui.setupWithNavController
 
-import com.example.firstapp.DynamicObjects
-
+import com.example.firstapp.LifecycleData.DynamicObjects
+import com.example.firstapp.LifecycleData.Transition
 
 
 import com.example.firstapp.R
-import com.example.firstapp.Transitions
 import com.example.firstapp.databinding.ActivityTestNavBinding
 
-class TestNavActivity : AppCompatActivity(){
+class NavHostActivity : AppCompatActivity(){
     lateinit var binding:ActivityTestNavBinding
     private val dynamicObject: DynamicObjects by viewModels()
+    private val transition:Transition by viewModels()
     private lateinit var navController:NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +34,11 @@ class TestNavActivity : AppCompatActivity(){
         dynamicObject.dynamicModule.observe(this){
             navController.navigate(R.id.lessonsFrag)
         }
+
+        transition.goBack.observe(this){
+            navController.popBackStack()
+        }
+
 
         binding.bottNavTest.setOnItemSelectedListener { item ->
             when (item.itemId) {

@@ -9,7 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.AbcData
 import com.example.firstapp.Adapter.AbcAdapter
-import com.example.firstapp.DynamicObjects
+import com.example.firstapp.LifecycleData.DynamicObjects
+import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentAbcBinding
 
@@ -17,7 +18,7 @@ import com.example.firstapp.databinding.FragmentAbcBinding
 class AbcFrag : Fragment() {
     lateinit var binding: FragmentAbcBinding
 
-    private val navToLes: DynamicObjects by activityViewModels()
+    private val lifeData: LifeData by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +32,7 @@ class AbcFrag : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        lifeData.state.value = "Азбука Визажа"
 
         val adapter = AbcAdapter()
         val abcItems = resources.getStringArray(R.array.Abc)

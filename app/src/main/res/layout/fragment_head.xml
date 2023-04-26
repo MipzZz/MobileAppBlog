@@ -12,6 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageButton
+            android:id="@+id/imBtBack"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:backgroundTint="#00FFFFFF"
+            android:src="@drawable/drwback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txtHead"
             android:layout_width="0dp"
@@ -25,7 +35,7 @@
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imProfile"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imBtBack"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView

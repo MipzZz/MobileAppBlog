@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Abc">Азбука Визажа</string>
+    <string name="Main">Лекции</string>
+    <string name="Lessons">Уроки</string>
+    <string name="Tests">Тесты</string>
+</resources>

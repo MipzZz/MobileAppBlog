@@ -7,7 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.HeadFrag
-import com.example.firstapp.LifeData
+import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.Adapter.ModulesAdapter
 import com.example.firstapp.ModulesData
 import com.example.firstapp.R
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity(), ModulesAdapter.Listener {
             finish()
         }
         binding.btContinue.setOnClickListener {
-            startActivity(Intent(this, TestNavActivity::class.java))
+            startActivity(Intent(this, NavHostActivity::class.java))
         }
         init()
 

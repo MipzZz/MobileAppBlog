@@ -11,7 +11,9 @@ import androidx.fragment.app.activityViewModels
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
-import com.example.firstapp.DynamicObjects
+import com.example.firstapp.HeadFrag
+import com.example.firstapp.LifecycleData.DynamicObjects
+import com.example.firstapp.LifecycleData.LifeData
 
 import com.example.firstapp.ModulesData
 import com.example.firstapp.R
@@ -20,6 +22,7 @@ import com.example.firstapp.databinding.FragmentModuleBinding
 
 class ModuleFrag : Fragment(), ModulesAdapter.Listener {
     lateinit var binding: FragmentModuleBinding
+    private val lifeData: LifeData by activityViewModels()
     private val dynamicObject: DynamicObjects by activityViewModels()
     private val ImIdList = listOf(
         R.drawable.plug1,
@@ -44,6 +47,12 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         val adapter = ModulesAdapter(this)
         val modTitles = resources.getStringArray(R.array.ModTitle)
         val modDesc = resources.getStringArray(R.array.ModDesc)
+
+        lifeData.title.value = "Модули"
+
+        lifeData.state.value = "Модули"
+
+        childFragmentManager.beginTransaction().replace(R.id.frHeadMod, HeadFrag.newInstance()).commit()
         binding.apply {
             rcycModules.layoutManager = LinearLayoutManager(context)
             rcycModules.adapter = adapter
