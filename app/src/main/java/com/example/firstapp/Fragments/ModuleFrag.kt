@@ -2,15 +2,15 @@ package com.example.firstapp.Fragments
 
 
 import android.os.Bundle
-import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
-import com.example.firstapp.Flags
+
 import com.example.firstapp.ModulesData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentModuleBinding
@@ -18,8 +18,7 @@ import com.example.firstapp.databinding.FragmentModuleBinding
 
 class ModuleFrag : Fragment(), ModulesAdapter.Listener {
     lateinit var binding: FragmentModuleBinding
-    private val adapter = ModulesAdapter(this)
-    private val flags: Flags by activityViewModels()
+
     private val ImIdList = listOf(
         R.drawable.plug1,
         R.drawable.plug2,
@@ -35,37 +34,32 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentModuleBinding.inflate(inflater)
-        Log.d("MyLog","Запуск вью фрагмента ModuleFrag  ${flags.alreadyExistModule.value}")
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("MyLog","Фрагмент вью создан ModuleFrag  ${flags.alreadyExistModule.value}")
-        init()
+        val adapter = ModulesAdapter(this)
+        val modTitles = resources.getStringArray(R.array.ModTitle)
+        val modDesc = resources.getStringArray(R.array.ModDesc)
+        binding.apply {
+            rcycModules.layoutManager = LinearLayoutManager(context)
+            rcycModules.adapter = adapter
+            for (index in 0..modTitles.size - 1) {
+                val module = ModulesData(
+                    ImIdList[index],
+                    modTitles[index],
+                    modDesc[index],
+                    index
+                )
+                adapter.addModule(module)
+            }
+        }
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = ModuleFrag()
-    }
-
-    private fun init(){
-            val modTitles = resources.getStringArray(R.array.ModTitle)
-            val modDesc = resources.getStringArray(R.array.ModDesc)
-            binding.apply {
-                rcycModules.layoutManager = LinearLayoutManager(context)
-                rcycModules.adapter = adapter
-                for (index in 0..modTitles.size - 1) {
-                    val module = ModulesData(
-                        ImIdList[index],
-                        modTitles[index],
-                        modDesc[index],
-                        index
-                    )
-                    adapter.addModule(module)
-                }
-            }
     }
 
 
