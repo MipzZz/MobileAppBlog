@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="count_label">Q%d</string>
+    <string name="question_label">Question</string>
+    <string name="btn_answer">Choice</string>
+</resources>

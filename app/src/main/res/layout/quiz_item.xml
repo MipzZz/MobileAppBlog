@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:ignore="UsingOnClickInXml">
+
+
+    <TextView
+        android:id="@+id/countLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/count_label"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtQuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/question_label"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countLabel" />
+
+    <Button
+        android:id="@+id/btChoice1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/buttonBackground"
+        android:onClick="checkAnswer"
+        android:text="@string/btn_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuest" />
+
+    <Button
+        android:id="@+id/btChoice2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/purple_200"
+        android:onClick="checkAnswer"
+        android:text="@string/btn_answer"
+        app:layout_constraintEnd_toEndOf="@+id/btChoice1"
+        app:layout_constraintStart_toStartOf="@+id/btChoice1"
+        app:layout_constraintTop_toBottomOf="@+id/btChoice1" />
+
+    <Button
+        android:id="@+id/btChoice3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/btChoice3"
+        android:onClick="checkAnswer"
+        android:text="@string/btn_answer"
+        app:layout_constraintEnd_toEndOf="@+id/btChoice2"
+        app:layout_constraintStart_toStartOf="@+id/btChoice2"
+        app:layout_constraintTop_toBottomOf="@+id/btChoice2" />
+
+    <Button
+        android:id="@+id/btChoice4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/btChoice4"
+        android:onClick="checkAnswer"
+        android:text="@string/btn_answer"
+        app:layout_constraintEnd_toEndOf="@+id/btChoice3"
+        app:layout_constraintStart_toStartOf="@+id/btChoice3"
+        app:layout_constraintTop_toBottomOf="@+id/btChoice3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

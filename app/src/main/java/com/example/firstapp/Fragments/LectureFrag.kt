@@ -1,10 +1,13 @@
 package com.example.firstapp.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnScrollChangedListener
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.firstapp.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
@@ -21,7 +24,7 @@ class LectureFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLectureBinding.inflate(inflater)
         return binding.root
     }
@@ -35,6 +38,9 @@ class LectureFrag : Fragment() {
         childFragmentManager.beginTransaction().replace(R.id.frHeadLect, HeadFrag.newInstance()).commit()
 
         binding.txtLecture.text = dynamicObject.dynamicLesson.value!!.Lec
+
+
+
     }
 
 
