@@ -67,7 +67,8 @@ class TestFrag : Fragment(), TestsAdapter.Listener {
                     imIdList[index],
                     testTitles[index],
                     testQAmount[index],
-                    index
+                    index,
+                    false
                 )
                 adapter.addTest(test)
             }

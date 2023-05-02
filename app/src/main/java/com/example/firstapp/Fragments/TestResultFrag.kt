@@ -38,6 +38,10 @@ class TestResultFrag : Fragment() {
             qAmountInt
         )
 
+        if (score == qAmountInt){
+            lifeData.progress.value = 5f + lifeData.progress.value!!
+        }
+
         binding.btTryAgain.setOnClickListener {
             transition.goAgain.value = true
         }

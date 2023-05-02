@@ -3,6 +3,7 @@
     <string name="hello_world_text">0</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="mainBt">Приступить</string>
+    <string name="progress">Вы прошли обучение на %d процентов</string>
     <string name="TestHTML"> <align> My Color Text </align> </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

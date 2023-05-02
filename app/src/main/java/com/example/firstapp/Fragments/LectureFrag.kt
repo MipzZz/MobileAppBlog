@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.firstapp.HeadFrag
+import com.example.firstapp.LectureData
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
+import com.example.firstapp.TestsData
 import com.example.firstapp.databinding.FragmentLectureBinding
 
 
@@ -36,8 +38,11 @@ class LectureFrag : Fragment() {
         lifeData.state.value = "Урок"
 
         childFragmentManager.beginTransaction().replace(R.id.frHeadLect, HeadFrag.newInstance()).commit()
-
+        binding.btRead.setOnClickListener {
+            lifeData.progress.value = 5f + lifeData.progress.value!!
+        }
         binding.txtLecture.text = dynamicObject.dynamicLesson.value!!.Lec
+
 
 
 

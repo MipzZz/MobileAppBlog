@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
@@ -16,6 +17,7 @@ import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 
 import com.example.firstapp.ModulesData
+import com.example.firstapp.ProgressBarFrag
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentModuleBinding
 
@@ -33,12 +35,14 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
     )
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentModuleBinding.inflate(inflater)
+
         return binding.root
 
     }
@@ -49,10 +53,13 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         val modDesc = resources.getStringArray(R.array.ModDesc)
 
         lifeData.title.value = "Модули"
-
         lifeData.state.value = "Модули"
 
+
+
+
         childFragmentManager.beginTransaction().replace(R.id.frHeadMod, HeadFrag.newInstance()).commit()
+        childFragmentManager.beginTransaction().replace(R.id.frProgressLayout, ProgressBarFrag.newInstance()).commit()
         binding.apply {
             rcycModules.layoutManager = LinearLayoutManager(context)
             rcycModules.adapter = adapter

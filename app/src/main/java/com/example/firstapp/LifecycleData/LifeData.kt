@@ -18,5 +18,12 @@ open class LifeData:ViewModel() {
         MutableLiveData<Int>()
     }
 
+    val progress: MutableLiveData<Float> by lazy{
+        MutableLiveData<Float>()
+    }
+
+    val lecRead: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
 
 }
