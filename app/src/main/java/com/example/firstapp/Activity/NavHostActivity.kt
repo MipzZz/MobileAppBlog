@@ -39,8 +39,20 @@ class NavHostActivity : AppCompatActivity(){
             navController.navigate(R.id.lectureFrag)
         }
 
+        dynamicObject.dynamicTest.observe(this){
+            navController.navigate(R.id.quizFrag)
+        }
+
         transition.goBack.observe(this){
             navController.popBackStack()
+        }
+
+        transition.goToResult.observe(this){
+            navController.navigate(R.id.testResultFrag)
+        }
+
+        transition.goAgain.observe(this){
+            navController.navigate(R.id.quizFrag)
         }
 
 

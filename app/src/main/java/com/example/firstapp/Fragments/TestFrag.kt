@@ -35,13 +35,19 @@ class TestFrag : Fragment(), TestsAdapter.Listener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTestBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Общий массив тестов
+
+
+
+
 
         lifeData.state.value = "Тесты"
         lifeData.title.value = "Тесты"
@@ -61,6 +67,7 @@ class TestFrag : Fragment(), TestsAdapter.Listener {
                     imIdList[index],
                     testTitles[index],
                     testQAmount[index],
+                    index
                 )
                 adapter.addTest(test)
             }

@@ -37,7 +37,7 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentModuleBinding.inflate(inflater)
         return binding.root
 

@@ -14,5 +14,9 @@ open class LifeData:ViewModel() {
         MutableLiveData<String>()
     }
 
+    val testScore: MutableLiveData<Int> by lazy{
+        MutableLiveData<Int>()
+    }
+
 
 }

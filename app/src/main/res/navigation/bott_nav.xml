@@ -25,7 +25,11 @@
         android:id="@+id/testFrag"
         android:name="com.example.firstapp.Fragments.TestFrag"
         android:label="fragment_test"
-        tools:layout="@layout/fragment_test"/>
+        tools:layout="@layout/fragment_test">
+        <action
+            android:id="@+id/action_testFrag_to_quizFrag"
+            app:destination="@id/quizFrag" />
+    </fragment>
     <fragment
         android:id="@+id/lessonsFrag"
         android:name="com.example.firstapp.Fragments.LessonsFrag"
@@ -40,4 +44,17 @@
         android:name="com.example.firstapp.Fragments.LectureFrag"
         android:label="fragment_lecture"
         tools:layout="@layout/fragment_lecture" />
+    <fragment
+        android:id="@+id/quizFrag"
+        android:name="com.example.firstapp.Fragments.QuizFrag"
+        android:label="QuizFrag" >
+        <action
+            android:id="@+id/action_quizFrag_to_testResultFrag"
+            app:destination="@id/testResultFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/testResultFrag"
+        android:name="com.example.firstapp.Fragments.TestResultFrag"
+        android:label="fragment_test_result"
+        tools:layout="@layout/fragment_test_result" />
 </navigation>

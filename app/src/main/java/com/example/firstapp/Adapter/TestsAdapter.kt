@@ -17,7 +17,7 @@ class TestsAdapter(val listener: Listener): RecyclerView.Adapter<TestsAdapter.Te
             imPrevTest.setImageResource(test.ImgId)
             txtTestTitle.text = test.Title
             txtNumQ.text = test.qAmount
-            imStart.setOnClickListener{
+            itemCard.setOnClickListener{
                 listener.onClick(test)
             }
         }
