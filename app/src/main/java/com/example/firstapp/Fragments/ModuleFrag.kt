@@ -8,16 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
-import com.example.firstapp.HeadFrag
+import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 
 import com.example.firstapp.ModulesData
-import com.example.firstapp.ProgressBarFrag
+import com.example.firstapp.MicroFragments.ProgressBarFrag
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentModuleBinding
 

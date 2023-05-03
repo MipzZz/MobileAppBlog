@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.firstapp.Adapter.LessonsAdapter
 import com.example.firstapp.Adapter.TestsAdapter
-import com.example.firstapp.HeadFrag
-import com.example.firstapp.LessonsData
+import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R

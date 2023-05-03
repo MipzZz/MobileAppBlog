@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.firstapp.MicroFragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,7 +22,7 @@ class HeadFrag : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHeadBinding.inflate(inflater)
         return binding.root
     }

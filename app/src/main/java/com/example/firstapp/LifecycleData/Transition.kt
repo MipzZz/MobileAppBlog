@@ -17,4 +17,12 @@ class Transition:ViewModel() {
     val goAgain: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
+
+    val goSignIn: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+
+    val goSignUp: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
 }

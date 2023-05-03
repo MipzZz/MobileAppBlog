@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.firstapp.HeadFrag
+import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.Adapter.LessonsAdapter
 import com.example.firstapp.LessonsData
 import com.example.firstapp.LifecycleData.LifeData

@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.AbcAdapter
 import com.example.firstapp.AbcData
-import com.example.firstapp.HeadFrag
+import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityAbcBinding
