@@ -27,26 +27,31 @@ class NavHostActivity : AppCompatActivity(){
     private lateinit var navController:NavController
     private lateinit var mAuth: FirebaseAuth
     lateinit var mDatabase: DatabaseReference
-    private var progress: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityTestNavBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navController = findNavController(R.id.fragmentContainerView)
         binding.bottNavTest.setupWithNavController(navController)
-
-        lifeData.progress.value = 0f
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
+        val currentUserUid = currentUser?.uid
         mDatabase = Firebase.database.reference
 
-        val currentUserUid = currentUser?.uid
-        val currentUserEmail = currentUser?.email
-        val r = mDatabase.child("/users/$currentUserUid").child("tel").get().addOnSuccessListener {
-        Log.d("MyLog","${it.value}")}
+      // mDatabase.child("/users/$currentUserUid").child("Progress").get().addOnSuccessListener { lifeData.progress.value =
+       //    it.value as Float?
+      // }
 
 
+
+
+
+        lifeData.progress.observe(this){
+            mDatabase.child("/users/$currentUserUid").child("Progress").setValue(lifeData.progress.value)
+        }
 
 
         dynamicObject.dynamicModule.observe(this){
@@ -71,6 +76,10 @@ class NavHostActivity : AppCompatActivity(){
 
         transition.goAgain.observe(this){
             navController.navigate(R.id.quizFrag)
+        }
+
+        transition.goToTests.observe(this){
+            navController.navigate(R.id.testFrag)
         }
 
 

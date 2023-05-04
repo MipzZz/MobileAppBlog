@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.firstapp.Activity.NavHostActivity
+import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.Transition
 import com.example.firstapp.UserData
 import com.example.firstapp.databinding.FragmentSingUpBinding
@@ -20,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 class SignUpFrag : Fragment() {
     lateinit var binding: FragmentSingUpBinding
     val transition: Transition by activityViewModels()
+    val dynamicObjects: DynamicObjects by activityViewModels()
     private lateinit var mAuth: FirebaseAuth
     lateinit var mDatabase: DatabaseReference
 
@@ -28,12 +30,13 @@ class SignUpFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSingUpBinding.inflate(inflater)
-        mAuth = FirebaseAuth.getInstance()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mDatabase = Firebase.database.reference
+        mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
         val currentUserUid = currentUser?.uid
         val currentUserEmail = currentUser?.email
@@ -51,13 +54,15 @@ class SignUpFrag : Fragment() {
                         val user = UserData(
                             Name = binding.edName.text.toString(),
                             SecondName = binding.edSurName.text.toString(),
-                            Phone = binding.edPhone.text.toString()
+                            Phone = binding.edPhone.text.toString(),
+                            Email = binding.edEmailReg.text.toString(),
+                            Progress = 0f
                         )
-                        mDatabase.child("/users/$currentUserUid").setValue(user)
+                        mDatabase.child("/users/").push().setValue(user)
                         startActivity(Intent(activity, NavHostActivity::class.java))
                     }
                     else Toast.makeText(context,"Что-то не так", Toast.LENGTH_LONG).show()
-                }
+                    }
             }
             else{
                 Toast.makeText(context,"Введите данные", Toast.LENGTH_LONG).show()

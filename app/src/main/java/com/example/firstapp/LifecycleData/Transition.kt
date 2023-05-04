@@ -25,4 +25,9 @@ class Transition:ViewModel() {
     val goSignUp: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
+
+    val goToTests: MutableLiveData<Boolean> by lazy {
+        MutableLiveData<Boolean>()
+    }
+
 }

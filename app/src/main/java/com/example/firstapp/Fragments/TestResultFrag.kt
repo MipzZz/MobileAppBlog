@@ -11,6 +11,10 @@ import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentTestResultBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class TestResultFrag : Fragment() {
@@ -18,6 +22,8 @@ class TestResultFrag : Fragment() {
     val lifeData:LifeData by activityViewModels()
     private val dynamicObjects:DynamicObjects by activityViewModels()
     val transition: Transition by activityViewModels()
+    private lateinit var mAuth: FirebaseAuth
+    lateinit var mDatabase: DatabaseReference
 
 
     override fun onCreateView(
@@ -37,13 +43,28 @@ class TestResultFrag : Fragment() {
             score,
             qAmountInt
         )
+        val currentState = dynamicObjects.dynamicTest.value
+        val state = currentState?.Num.toString()
+        mAuth = FirebaseAuth.getInstance()
+        mDatabase = Firebase.database.reference
+        val currentUser = mAuth.currentUser
+        val currentUserUid = currentUser?.uid
 
-        if (score == qAmountInt){
-            lifeData.progress.value = 5f + lifeData.progress.value!!
+        if (score == qAmountInt) {
+            mDatabase.child("/users/$currentUserUid").child(state).get().addOnSuccessListener {
+                if (it.value == 0 || it.value == null) {
+                    mDatabase.child("/users/$currentUserUid").child(state).setValue(1)
+                    lifeData.progress.value = 5f + lifeData.progress.value!!
+                }
+            }
         }
 
         binding.btTryAgain.setOnClickListener {
             transition.goAgain.value = true
+        }
+
+        binding.btQuit.setOnClickListener{
+            transition.goToTests.value = true
         }
     }
 

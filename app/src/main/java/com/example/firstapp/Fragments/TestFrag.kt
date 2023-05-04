@@ -40,11 +40,6 @@ class TestFrag : Fragment(), TestsAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Общий массив тестов
-
-
-
-
 
         lifeData.state.value = "Тесты"
         lifeData.title.value = "Тесты"

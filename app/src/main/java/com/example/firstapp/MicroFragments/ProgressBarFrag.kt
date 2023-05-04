@@ -9,9 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.databinding.FragmentProgressBarBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class ProgressBarFrag : Fragment() {
-
+    private lateinit var mAuth: FirebaseAuth
+    lateinit var mDatabase: DatabaseReference
     lateinit var binding: FragmentProgressBarBinding
     val lifeData: LifeData by activityViewModels()
     override fun onCreateView(
@@ -24,8 +29,13 @@ class ProgressBarFrag : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        lifeData.progress.observe(activity as LifecycleOwner) {
 
+        mDatabase = Firebase.database.reference
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        val currentUserUid = currentUser?.uid
+        mDatabase.child("/users/$currentUserUid").child("Progress").setValue(binding.progressBar.progress)
+        lifeData.progress.observe(activity as LifecycleOwner) {
             binding.progressBar.progress += lifeData.progress.value!!
 
         }

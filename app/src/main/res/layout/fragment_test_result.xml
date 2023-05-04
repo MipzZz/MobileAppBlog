@@ -41,4 +41,15 @@
         app:layout_constraintStart_toStartOf="@+id/txtResultScore"
         app:layout_constraintTop_toBottomOf="@+id/txtResultScore" />
 
+    <Button
+        android:id="@+id/btQuit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:backgroundTint="@color/buttonBackground"
+        android:text="Выход"
+        app:layout_constraintEnd_toEndOf="@+id/btTryAgain"
+        app:layout_constraintStart_toStartOf="@+id/btTryAgain"
+        app:layout_constraintTop_toBottomOf="@+id/btTryAgain" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
