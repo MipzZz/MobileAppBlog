@@ -77,7 +77,8 @@ class LessonsFrag : Fragment(), LessonsAdapter.Listener {
                     imIdList[index],
                     modTitles[index],
                     modDesc[index],
-                    modLec[index]
+                    modLec[index],
+                    index
                 )
                 adapter.addLesson(lesson)
             }

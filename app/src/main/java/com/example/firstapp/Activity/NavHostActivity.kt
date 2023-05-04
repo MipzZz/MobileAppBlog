@@ -1,23 +1,23 @@
 package com.example.firstapp.Activity
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-
-
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-
 import androidx.navigation.ui.setupWithNavController
-
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
-
-
 import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityTestNavBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class NavHostActivity : AppCompatActivity(){
     lateinit var binding:ActivityTestNavBinding
@@ -25,6 +25,8 @@ class NavHostActivity : AppCompatActivity(){
     private val lifeData: LifeData by viewModels()
     private val transition:Transition by viewModels()
     private lateinit var navController:NavController
+    private lateinit var mAuth: FirebaseAuth
+    lateinit var mDatabase: DatabaseReference
     private var progress: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +37,18 @@ class NavHostActivity : AppCompatActivity(){
         binding.bottNavTest.setupWithNavController(navController)
 
         lifeData.progress.value = 0f
+        mAuth = FirebaseAuth.getInstance()
+        val currentUser = mAuth.currentUser
+        mDatabase = Firebase.database.reference
 
-        
+        val currentUserUid = currentUser?.uid
+        val currentUserEmail = currentUser?.email
+        val r = mDatabase.child("/users/$currentUserUid").child("tel").get().addOnSuccessListener {
+        Log.d("MyLog","${it.value}")}
+
+
+
+
         dynamicObject.dynamicModule.observe(this){
             navController.navigate(R.id.lessonsFrag)
         }
@@ -60,7 +72,7 @@ class NavHostActivity : AppCompatActivity(){
         transition.goAgain.observe(this){
             navController.navigate(R.id.quizFrag)
         }
-        
+
 
 
         binding.bottNavTest.setOnItemSelectedListener { item ->

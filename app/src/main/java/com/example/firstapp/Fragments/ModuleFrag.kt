@@ -54,7 +54,8 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         lifeData.title.value = "Модули"
         lifeData.state.value = "Модули"
 
-
+        if (lifeData.progress.value == null) lifeData.progress.value = 0f
+        binding.txtProg.text = getString(R.string.progress, lifeData.progress.value?.toInt())
 
 
         childFragmentManager.beginTransaction().replace(R.id.frHeadMod, HeadFrag.newInstance()).commit()

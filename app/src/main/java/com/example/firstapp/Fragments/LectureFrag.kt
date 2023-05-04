@@ -1,6 +1,7 @@
 package com.example.firstapp.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentLectureBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class LectureFrag : Fragment() {
@@ -18,6 +23,8 @@ class LectureFrag : Fragment() {
     lateinit var binding: FragmentLectureBinding
     private val lifeData: LifeData by activityViewModels()
     private val dynamicObject: DynamicObjects by activityViewModels()
+//    lateinit var mDatabase: DatabaseReference
+//    lateinit var mAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +35,13 @@ class LectureFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val currentMod = dynamicObject.dynamicModule.value!!.Num.toString()
+        val currentLess = dynamicObject.dynamicLesson.value!!.Num.toString()
+        val currentState = currentMod + currentLess
+//        val currentUser = mAuth.currentUser
+//        mDatabase = Firebase.database.reference
+
+       // mDatabase.child(currentUser!!.email.toString()).child(currentState).setValue(1)
 
         lifeData.title.value = "Урок"
         lifeData.state.value = "Урок"

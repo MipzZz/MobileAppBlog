@@ -154,6 +154,16 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/black" />
 
+            <Button
+                android:id="@+id/btLogOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="64dp"
+                android:backgroundTint="#E35E5E"
+                android:text="Выход" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

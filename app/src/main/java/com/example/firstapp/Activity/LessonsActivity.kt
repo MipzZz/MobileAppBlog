@@ -13,7 +13,7 @@ import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityLessonsBinding
 
 class LessonsActivity : AppCompatActivity(), LessonsAdapter.Listener {
-    var lesson = LessonsData(0, "", "", "")
+    var lesson = LessonsData(0, "", "", "", 0)
     lateinit var binding: ActivityLessonsBinding
     private val adapter = LessonsAdapter(this)
     private val ImIdList = listOf(
@@ -78,7 +78,8 @@ class LessonsActivity : AppCompatActivity(), LessonsAdapter.Listener {
                     ImIdList[index],
                     modTitles[index],
                     modDesc[index],
-                    modLec[index]
+                    modLec[index],
+                    index
                 )
                 adapter.addLesson(lesson)
             }
