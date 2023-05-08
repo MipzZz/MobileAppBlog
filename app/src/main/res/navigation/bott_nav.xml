@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bott_nav"
-    app:startDestination="@id/moduleFrag">
+    app:startDestination="@id/welcomeFrag">
 
     <fragment
         android:id="@+id/moduleFrag"
@@ -57,4 +57,39 @@
         android:name="com.example.firstapp.Fragments.TestResultFrag"
         android:label="fragment_test_result"
         tools:layout="@layout/fragment_test_result" />
+    <fragment
+        android:id="@+id/signInFrag"
+        android:name="com.example.firstapp.Fragments.SignInFrag"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFrag_to_moduleFrag"
+            app:destination="@id/moduleFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFrag"
+        android:name="com.example.firstapp.Fragments.WelcomeFrag"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFrag_to_signInFrag"
+            app:destination="@id/signInFrag" />
+        <action
+            android:id="@+id/action_welcomeFrag_to_signUpFrag"
+            app:destination="@id/signUpFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFrag"
+        android:name="com.example.firstapp.Fragments.SignUpFrag"
+        android:label="fragment_sing_up"
+        tools:layout="@layout/fragment_sing_up" >
+        <action
+            android:id="@+id/action_signUpFrag_to_moduleFrag"
+            app:destination="@id/moduleFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFrag"
+        android:name="com.example.firstapp.Fragments.ProfileFrag"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

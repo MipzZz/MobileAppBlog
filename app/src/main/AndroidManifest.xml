@@ -13,22 +13,7 @@
         tools:targetApi="31">
         <activity
             android:name=".Activity.NavHostActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.AbcActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.LectureActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.LessonsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.AuthorizationActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

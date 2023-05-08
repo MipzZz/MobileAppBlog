@@ -1,5 +1,7 @@
 package com.example.firstapp.Fragments
 
+import android.accounts.Account
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.example.firstapp.Activity.NavHostActivity
+import com.example.firstapp.DB.AccountDatabase
+import com.example.firstapp.DB.AccountViewModel
+import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
 import com.example.firstapp.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -16,38 +24,37 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class SignInFrag : Fragment() {
+    lateinit var mAccountViewModel: AccountViewModel
     lateinit var binding: FragmentSignInBinding
     val transition: Transition by activityViewModels()
-    private lateinit var mAuth:FirebaseAuth
-
+    val lifeData: LifeData by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = FragmentSignInBinding.inflate(inflater)
-        mAuth = FirebaseAuth.getInstance()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        val data = mAccountViewModel.readAllData
         binding.imBtBack3.setOnClickListener{
-            transition.goBack.value = true
+            parentFragmentManager.popBackStack()
         }
 
         binding.btLogin.setOnClickListener{
-            if(!binding.edEmail.text.toString().isEmpty() and !binding.edPassword.text.toString().isEmpty()) {
-                mAuth.signInWithEmailAndPassword(
-                    binding.edEmail.text.toString(),
-                    binding.edPassword.text.toString()
-                ).addOnCompleteListener {
-                    if (it.isSuccessful) startActivity(Intent(activity, NavHostActivity::class.java))
-                    else Toast.makeText(context,"Что-то не так", Toast.LENGTH_LONG).show()
+            data.observe(activity as LifecycleOwner){AccountsList ->
+                AccountsList.forEach{ account ->
+                    if (account.email == binding.edEmail.text.toString()
+                        && account.password == binding.edPassword.text.toString()) {
+                        transition.goToStart.value = true
+                        lifeData.account.value = account
+                    }
                 }
-            }
-            else{
-                Toast.makeText(context,"Введите данные", Toast.LENGTH_LONG).show()
+
             }
         }
     }

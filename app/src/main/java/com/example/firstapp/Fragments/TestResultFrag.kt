@@ -51,13 +51,9 @@ class TestResultFrag : Fragment() {
         val currentUserUid = currentUser?.uid
 
         if (score == qAmountInt) {
-            mDatabase.child("/users/$currentUserUid").child(state).get().addOnSuccessListener {
-                if (it.value == 0 || it.value == null) {
-                    mDatabase.child("/users/$currentUserUid").child(state).setValue(1)
-                    lifeData.progress.value = 5f + lifeData.progress.value!!
-                }
-            }
+            lifeData.progress.value = 5f + lifeData.progress.value!!
         }
+
 
         binding.btTryAgain.setOnClickListener {
             transition.goAgain.value = true

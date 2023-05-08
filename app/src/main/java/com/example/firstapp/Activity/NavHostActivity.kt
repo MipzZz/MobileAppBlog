@@ -25,8 +25,7 @@ class NavHostActivity : AppCompatActivity(){
     private val lifeData: LifeData by viewModels()
     private val transition:Transition by viewModels()
     private lateinit var navController:NavController
-    private lateinit var mAuth: FirebaseAuth
-    lateinit var mDatabase: DatabaseReference
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,21 +35,29 @@ class NavHostActivity : AppCompatActivity(){
         setContentView(binding.root)
         navController = findNavController(R.id.fragmentContainerView)
         binding.bottNavTest.setupWithNavController(navController)
-        mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth.currentUser
-        val currentUserUid = currentUser?.uid
-        mDatabase = Firebase.database.reference
-
-      // mDatabase.child("/users/$currentUserUid").child("Progress").get().addOnSuccessListener { lifeData.progress.value =
-       //    it.value as Float?
-      // }
 
 
+        transition.goToProfile.observe(this){
+            navController.navigate(R.id.profileFrag)
+        }
 
+        transition.goToStart.observe(this){
+            navController.navigate(R.id.moduleFrag)
+        }
 
+        transition.goSignIn.observe(this){
+            navController.navigate(R.id.signInFrag)
+        }
+
+        transition.goSignUp.observe(this){
+            navController.navigate(R.id.signUpFrag)
+        }
+
+        transition.goBack.observe(this){
+            navController.popBackStack()
+        }
 
         lifeData.progress.observe(this){
-            mDatabase.child("/users/$currentUserUid").child("Progress").setValue(lifeData.progress.value)
         }
 
 

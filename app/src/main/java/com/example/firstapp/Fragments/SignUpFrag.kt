@@ -2,28 +2,31 @@ package com.example.firstapp.Fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
 import com.example.firstapp.Activity.NavHostActivity
+import com.example.firstapp.DB.AccountDao
+import com.example.firstapp.DB.AccountDatabase
+import com.example.firstapp.DB.Entities.Account
+import com.example.firstapp.DB.AccountViewModel
 import com.example.firstapp.LifecycleData.DynamicObjects
+import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
-import com.example.firstapp.UserData
 import com.example.firstapp.databinding.FragmentSingUpBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
 class SignUpFrag : Fragment() {
+    lateinit var mAccountViewModel: AccountViewModel
     lateinit var binding: FragmentSingUpBinding
     val transition: Transition by activityViewModels()
-    val dynamicObjects: DynamicObjects by activityViewModels()
-    private lateinit var mAuth: FirebaseAuth
-    lateinit var mDatabase: DatabaseReference
+    val lifeData: LifeData by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,44 +34,49 @@ class SignUpFrag : Fragment() {
     ): View {
         binding = FragmentSingUpBinding.inflate(inflater)
 
+        mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+
+        binding.btRegistr.setOnClickListener{
+            insertDataToDatabase()
+            transition.goToStart.value = true
+        }
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mDatabase = Firebase.database.reference
-        mAuth = FirebaseAuth.getInstance()
-        val currentUser = mAuth.currentUser
-        val currentUserUid = currentUser?.uid
-        val currentUserEmail = currentUser?.email
+
         binding.imBtBack2.setOnClickListener{
-            transition.goBack.value = true
+            parentFragmentManager.popBackStack()
         }
 
-        binding.btRegistr.setOnClickListener{
-            if(!binding.edEmailReg.text.toString().isEmpty() and !binding.edPass.text.toString().isEmpty()) {
-                mAuth.createUserWithEmailAndPassword(
-                    binding.edEmailReg.text.toString(),
-                    binding.edPass.text.toString()
-                ).addOnCompleteListener{
-                    if (it.isSuccessful) {
-                        val user = UserData(
-                            Name = binding.edName.text.toString(),
-                            SecondName = binding.edSurName.text.toString(),
-                            Phone = binding.edPhone.text.toString(),
-                            Email = binding.edEmailReg.text.toString(),
-                            Progress = 0f
-                        )
-                        mDatabase.child("/users/").push().setValue(user)
-                        startActivity(Intent(activity, NavHostActivity::class.java))
-                    }
-                    else Toast.makeText(context,"Что-то не так", Toast.LENGTH_LONG).show()
-                    }
-            }
-            else{
-                Toast.makeText(context,"Введите данные", Toast.LENGTH_LONG).show()
-            }
+
+    }
+
+    private fun insertDataToDatabase() {
+        val firstName = binding.edName.text.toString()
+        val lastName = binding.edSurName.text.toString()
+        val phone = binding.edPhone.text.toString()
+        val email = binding.edEmailReg.text.toString()
+        val password = binding.edPass.text.toString()
+
+        if(inputCheck(firstName,lastName)){
+            // Create Account Object
+            val account = Account(0,firstName,lastName,email, password, phone, 0f)
+
+            // Add Data in Database
+            mAccountViewModel.addAccount(account)
+            Toast.makeText(requireContext(), "Successfully added", Toast.LENGTH_LONG).show()
+            transition.goSignIn.value = true
+        }
+        else{
+            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_LONG).show()
         }
 
+    }
+
+    private fun inputCheck(firstName:String, lastName:String):Boolean{
+        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName))
     }
 
     companion object {
