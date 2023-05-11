@@ -29,6 +29,9 @@ class SignInFrag : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        lifeData.state.value = "Вход"
+
         mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         val data = mAccountViewModel.readAllData
         binding.imBtBack3.setOnClickListener{
@@ -42,6 +45,7 @@ class SignInFrag : Fragment() {
                         && account.password == binding.edPassword.text.toString()) {
                         transition.goToStart.value = true
                         lifeData.account.value = account
+                        lifeData.bottomNavVisibility.value = true
                     }
                 }
 

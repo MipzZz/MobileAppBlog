@@ -13,9 +13,12 @@ class AccountRepository(private val accountDao: AccountDao) {
     fun readAccountData(id:Int): Flow<Account?>{
         return accountDao.readAccountData(id)
     }
-
     suspend fun addAccount(account: Account){
         accountDao.addAccount(account)
+    }
+
+    suspend fun updateAccount(account: Account){
+        accountDao.updateAccount(account)
     }
 
 }

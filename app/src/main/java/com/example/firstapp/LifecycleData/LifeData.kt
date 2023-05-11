@@ -28,4 +28,9 @@ open class LifeData:ViewModel() {
         MutableLiveData<Float>()
     }
 
+    val bottomNavVisibility: MutableLiveData<Boolean> by lazy{
+        MutableLiveData<Boolean>()
+    }
+
+
 }

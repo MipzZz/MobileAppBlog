@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.firstapp.DB.Entities.Account
 import com.example.firstapp.DB.Entities.AccountSignInTuple
 import kotlinx.coroutines.flow.Flow
@@ -21,5 +22,7 @@ interface AccountDao {
     @Query("SELECT * FROM ACCOUNTS_TABLE ORDER BY id ASC")
     fun getAllAccounts(): LiveData<List<Account>>
 
+    @Update
+    suspend fun updateAccount(account: Account)
 
 }

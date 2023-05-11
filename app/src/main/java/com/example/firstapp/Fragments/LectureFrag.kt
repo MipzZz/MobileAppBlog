@@ -10,8 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import com.example.firstapp.DB.Entities.Account
 import com.example.firstapp.DB.Entities.AccountLectureIsRead
 import com.example.firstapp.DB.Viewmodels.AccountLecViewModel
+import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
@@ -25,7 +27,8 @@ class LectureFrag : Fragment() {
     lateinit var binding: FragmentLectureBinding
     private val lifeData: LifeData by activityViewModels()
     private val dynamicObject: DynamicObjects by activityViewModels()
-    lateinit var mAccountLecViewModel: AccountLecViewModel
+    private lateinit var mAccountLecViewModel: AccountLecViewModel
+    private lateinit var mAccountViewModel: AccountViewModel
     lateinit var lecId: String
 
 
@@ -35,22 +38,14 @@ class LectureFrag : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLectureBinding.inflate(inflater)
+
         mAccountLecViewModel = ViewModelProvider(this).get(AccountLecViewModel::class.java)
+        mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+
         lecId =
             dynamicObject.dynamicModule.value!!.Num.toString() + dynamicObject.dynamicLesson.value!!.Num.toString()
-        val accId: Int = lifeData.account.value!!.id
-        val data = mAccountLecViewModel.checkState(accId,lecId)
 
-        data.asLiveData().observe(activity as LifecycleOwner){
-            val res = it?.toString()
-            if (res == "true") binding.btRead.visibility = View.INVISIBLE
-        }
 
-        binding.btRead.setOnClickListener{
-            if (data.asLiveData().value == null) {
-                insertReadLecToDatabase(accId, lecId)
-            }
-        }
 
 
         return binding.root
@@ -59,6 +54,22 @@ class LectureFrag : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val accId: Int = lifeData.account.value!!.id
+        val data = mAccountLecViewModel.checkState(accId,lecId)
+
+        data.asLiveData().observe(activity as LifecycleOwner){
+            val res = it?.toString()
+            if (res == "true") binding.btRead.visibility = View.INVISIBLE
+        }
+
+        if (data.asLiveData().value != null) binding.btRead.visibility = View.INVISIBLE
+
+        binding.btRead.setOnClickListener{
+            if (data.asLiveData().value == null) {
+                insertReadLecToDatabase(accId, lecId)
+                updateProgress()
+            }
+        }
         lifeData.title.value = "Урок"
         lifeData.state.value = "Урок"
 
@@ -72,6 +83,21 @@ class LectureFrag : Fragment() {
         val accLec = AccountLectureIsRead(accountId, lectureId,true)
         mAccountLecViewModel.addAccountLec(accLec)
         Toast.makeText(requireContext(), "Read",Toast.LENGTH_LONG).show()
+    }
+
+    private fun updateProgress(){
+        val accId = lifeData.account.value!!.id
+        val firstName = lifeData.account.value!!.firstName
+        val lastName = lifeData.account.value!!.lastName
+        val phone = lifeData.account.value!!.phone
+        val email = lifeData.account.value!!.email
+        val password = lifeData.account.value!!.password
+        val progress = lifeData.account.value!!.progress + 10f
+
+        val account = Account(accId,firstName,lastName,email, password, phone, progress)
+
+        mAccountViewModel.updateAccount(account)
+
     }
 
 

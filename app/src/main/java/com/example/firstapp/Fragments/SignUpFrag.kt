@@ -39,6 +39,8 @@ class SignUpFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        lifeData.state.value = "Регистрация"
+
         binding.imBtBack2.setOnClickListener{
             parentFragmentManager.popBackStack()
         }

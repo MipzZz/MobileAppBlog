@@ -3,6 +3,7 @@ package com.example.firstapp.Activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -36,7 +37,11 @@ class NavHostActivity : AppCompatActivity(){
         navController = findNavController(R.id.fragmentContainerView)
         binding.bottNavTest.setupWithNavController(navController)
 
+        binding.bottNavTest.visibility = View.GONE
 
+        lifeData.bottomNavVisibility.observe(this){
+            binding.bottNavTest.visibility = View.VISIBLE
+        }
         transition.goToProfile.observe(this){
             navController.navigate(R.id.profileFrag)
         }
@@ -56,10 +61,6 @@ class NavHostActivity : AppCompatActivity(){
         transition.goBack.observe(this){
             navController.popBackStack()
         }
-
-        lifeData.progress.observe(this){
-        }
-
 
         dynamicObject.dynamicModule.observe(this){
             navController.navigate(R.id.lessonsFrag)

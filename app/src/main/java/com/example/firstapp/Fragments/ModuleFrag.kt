@@ -8,9 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.Adapter.ModulesAdapter
+import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
@@ -24,6 +28,7 @@ import com.example.firstapp.databinding.FragmentModuleBinding
 class ModuleFrag : Fragment(), ModulesAdapter.Listener {
     lateinit var binding: FragmentModuleBinding
     private val lifeData: LifeData by activityViewModels()
+    lateinit var mAccountViewModel: AccountViewModel
     private val dynamicObject: DynamicObjects by activityViewModels()
     private val ImIdList = listOf(
         R.drawable.plug1,
@@ -54,8 +59,12 @@ class ModuleFrag : Fragment(), ModulesAdapter.Listener {
         lifeData.title.value = "Модули"
         lifeData.state.value = "Модули"
 
-        if (lifeData.progress.value == null) lifeData.progress.value = 0f
-        binding.txtProg.text = getString(R.string.progress, lifeData.progress.value?.toInt())
+
+        mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        val data = mAccountViewModel.readAccountData(lifeData.account.value!!.id)
+        data.asLiveData().observe(activity as LifecycleOwner){
+            binding.txtProg.text = getString(R.string.progress, it?.progress?.toInt())
+        }
 
 
         childFragmentManager.beginTransaction().replace(R.id.frHeadMod, HeadFrag.newInstance()).commit()

@@ -10,9 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import com.example.firstapp.DB.Entities.Account
 import com.example.firstapp.DB.Entities.AccountTestIsPass
 import com.example.firstapp.DB.Viewmodels.AccountLecViewModel
 import com.example.firstapp.DB.Viewmodels.AccountTestViewModel
+import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
@@ -29,6 +31,7 @@ class TestResultFrag : Fragment() {
     val lifeData:LifeData by activityViewModels()
     private val dynamicObjects:DynamicObjects by activityViewModels()
     val transition: Transition by activityViewModels()
+    private lateinit var mAccountViewModel: AccountViewModel
     lateinit var mAccountTestViewModel: AccountTestViewModel
     lateinit var testId: String
 
@@ -42,6 +45,7 @@ class TestResultFrag : Fragment() {
         val qAmountInt = qAmountStr.substring(0,qAmountStr.indexOf(" ")).toInt()
 
         binding = FragmentTestResultBinding.inflate(inflater)
+        mAccountViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         mAccountTestViewModel = ViewModelProvider(this).get(AccountTestViewModel::class.java)
         testId = dynamicObjects.dynamicTest.value!!.Num.toString()
 
@@ -49,10 +53,13 @@ class TestResultFrag : Fragment() {
         val data = mAccountTestViewModel.checkTestState(accId,testId)
 
         if (score == qAmountInt) {
-            if (data.asLiveData().value == null) {
-                insertTestToDatabase(accId,testId)
+            data.asLiveData().observe(activity as LifecycleOwner){
+                if (it == null) {
+                    insertTestToDatabase(accId, testId)
+                    updateProgress()
+                }
             }
-            lifeData.progress.value = 5f + lifeData.progress.value!!
+
         }
         binding.txtResultScore.text = getString(
             R.string.result_score,
@@ -79,6 +86,21 @@ class TestResultFrag : Fragment() {
         val accTest = AccountTestIsPass(accountId, testId,true)
         mAccountTestViewModel.addAccountTest(accTest)
         Toast.makeText(requireContext(),"Тест пройден", Toast.LENGTH_LONG).show()
+    }
+
+    private fun updateProgress(){
+        val accId = lifeData.account.value!!.id
+        val firstName = lifeData.account.value!!.firstName
+        val lastName = lifeData.account.value!!.lastName
+        val phone = lifeData.account.value!!.phone
+        val email = lifeData.account.value!!.email
+        val password = lifeData.account.value!!.password
+        val progress = lifeData.account.value!!.progress + 10f
+
+        val account = Account(accId,firstName,lastName,email, password, phone, progress)
+
+        mAccountViewModel.updateAccount(account)
+
     }
 
     companion object {
