@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.firstapp.LessonsData
 import com.example.firstapp.ModulesData
 import com.example.firstapp.TestsData
-import com.example.firstapp.UserData
+
 
 class DynamicObjects:ViewModel() {
 
@@ -20,10 +20,5 @@ class DynamicObjects:ViewModel() {
     val dynamicTest: MutableLiveData<TestsData> by lazy {
         MutableLiveData<TestsData>()
     }
-
-    val dynamicUser: MutableLiveData<UserData> by lazy {
-        MutableLiveData<UserData>()
-    }
-
 
 }

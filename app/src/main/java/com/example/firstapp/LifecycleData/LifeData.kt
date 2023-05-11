@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModel
 
 open class LifeData:ViewModel() {
 
-    val userId:MutableLiveData<Int> by lazy{
-        MutableLiveData<Int>()
-    }
+
     val account:MutableLiveData<com.example.firstapp.DB.Entities.Account> by lazy{
         MutableLiveData<com.example.firstapp.DB.Entities.Account>()
     }

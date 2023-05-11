@@ -10,17 +10,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.coroutineScope
-import androidx.lifecycle.lifecycleScope
 import com.example.firstapp.DB.Entities.AccountLectureIsRead
 import com.example.firstapp.DB.Viewmodels.AccountLecViewModel
-import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.MicroFragments.HeadFrag
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.R
 import com.example.firstapp.databinding.FragmentLectureBinding
-import kotlinx.coroutines.launch
 
 
 @Suppress("SENSELESS_COMPARISON")
@@ -31,7 +27,7 @@ class LectureFrag : Fragment() {
     private val dynamicObject: DynamicObjects by activityViewModels()
     lateinit var mAccountLecViewModel: AccountLecViewModel
     lateinit var lecId: String
-    var queryResult: Boolean = false
+
 
 
     override fun onCreateView(
@@ -51,7 +47,9 @@ class LectureFrag : Fragment() {
         }
 
         binding.btRead.setOnClickListener{
-            insertReadLecToDatabase(accId, lecId)
+            if (data.asLiveData().value == null) {
+                insertReadLecToDatabase(accId, lecId)
+            }
         }
 
 

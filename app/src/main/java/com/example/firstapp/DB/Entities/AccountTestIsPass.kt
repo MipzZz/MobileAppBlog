@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class AccountTestIsPass (
     val accountId: Int,
     @PrimaryKey
-    val testId: Int,
+    val testId: String,
     val isPass: Boolean
 )
 

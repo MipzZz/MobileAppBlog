@@ -5,7 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
+import com.example.firstapp.DB.Entities.AccountTestIsPass
+import com.example.firstapp.DB.Viewmodels.AccountLecViewModel
+import com.example.firstapp.DB.Viewmodels.AccountTestViewModel
 import com.example.firstapp.LifecycleData.DynamicObjects
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
@@ -22,38 +29,42 @@ class TestResultFrag : Fragment() {
     val lifeData:LifeData by activityViewModels()
     private val dynamicObjects:DynamicObjects by activityViewModels()
     val transition: Transition by activityViewModels()
-    private lateinit var mAuth: FirebaseAuth
-    lateinit var mDatabase: DatabaseReference
+    lateinit var mAccountTestViewModel: AccountTestViewModel
+    lateinit var testId: String
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTestResultBinding.inflate(inflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val score = lifeData.testScore.value
         val qAmountStr = dynamicObjects.dynamicTest.value!!.qAmount
         val qAmountInt = qAmountStr.substring(0,qAmountStr.indexOf(" ")).toInt()
+
+        binding = FragmentTestResultBinding.inflate(inflater)
+        mAccountTestViewModel = ViewModelProvider(this).get(AccountTestViewModel::class.java)
+        testId = dynamicObjects.dynamicTest.value!!.Num.toString()
+
+        val accId: Int = lifeData.account.value!!.id
+        val data = mAccountTestViewModel.checkTestState(accId,testId)
+
+        if (score == qAmountInt) {
+            if (data.asLiveData().value == null) {
+                insertTestToDatabase(accId,testId)
+            }
+            lifeData.progress.value = 5f + lifeData.progress.value!!
+        }
         binding.txtResultScore.text = getString(
             R.string.result_score,
             score,
             qAmountInt
         )
-        val currentState = dynamicObjects.dynamicTest.value
-        val state = currentState?.Num.toString()
-        mAuth = FirebaseAuth.getInstance()
-        mDatabase = Firebase.database.reference
-        val currentUser = mAuth.currentUser
-        val currentUserUid = currentUser?.uid
 
-        if (score == qAmountInt) {
-            lifeData.progress.value = 5f + lifeData.progress.value!!
-        }
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.btTryAgain.setOnClickListener {
             transition.goAgain.value = true
@@ -62,6 +73,12 @@ class TestResultFrag : Fragment() {
         binding.btQuit.setOnClickListener{
             transition.goToTests.value = true
         }
+    }
+
+    private fun insertTestToDatabase(accountId:Int, testId:String){
+        val accTest = AccountTestIsPass(accountId, testId,true)
+        mAccountTestViewModel.addAccountTest(accTest)
+        Toast.makeText(requireContext(),"Тест пройден", Toast.LENGTH_LONG).show()
     }
 
     companion object {
