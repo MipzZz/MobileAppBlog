@@ -1,10 +1,9 @@
-package com.example.firstapp.DB
+package com.example.firstapp.DB.Repositories
 
-import android.accounts.AuthenticatorException
 import androidx.lifecycle.LiveData
+import com.example.firstapp.DB.Dao.AccountDao
 import com.example.firstapp.DB.Entities.Account
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 class AccountRepository(private val accountDao: AccountDao) {
 
@@ -18,6 +17,5 @@ class AccountRepository(private val accountDao: AccountDao) {
     suspend fun addAccount(account: Account){
         accountDao.addAccount(account)
     }
-
 
 }

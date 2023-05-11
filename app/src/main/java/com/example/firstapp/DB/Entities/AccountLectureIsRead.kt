@@ -4,19 +4,10 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(
-    tableName = "account_Lecture_isRead",
-    foreignKeys = [
-        ForeignKey(
-            entity = Account::class,
-            parentColumns = ["id"],
-            childColumns = ["accountId"]
-        )
-    ]
-)
+@Entity(tableName = "account_Lecture_isRead")
 data class AccountLectureIsRead (
-    @PrimaryKey
     val accountId: Int,
-    val lectureId: Int,
+    @PrimaryKey
+    val lectureId: String,
     val isRead: Boolean
 )

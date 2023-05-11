@@ -1,6 +1,5 @@
 package com.example.firstapp.Fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -9,14 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import com.example.firstapp.Activity.NavHostActivity
-import com.example.firstapp.DB.AccountDao
-import com.example.firstapp.DB.AccountDatabase
 import com.example.firstapp.DB.Entities.Account
-import com.example.firstapp.DB.AccountViewModel
-import com.example.firstapp.LifecycleData.DynamicObjects
+import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
 import com.example.firstapp.databinding.FragmentSingUpBinding
@@ -38,7 +32,6 @@ class SignUpFrag : Fragment() {
 
         binding.btRegistr.setOnClickListener{
             insertDataToDatabase()
-            transition.goToStart.value = true
         }
 
         return binding.root
@@ -49,8 +42,6 @@ class SignUpFrag : Fragment() {
         binding.imBtBack2.setOnClickListener{
             parentFragmentManager.popBackStack()
         }
-
-
     }
 
     private fun insertDataToDatabase() {
@@ -63,7 +54,6 @@ class SignUpFrag : Fragment() {
         if(inputCheck(firstName,lastName)){
             // Create Account Object
             val account = Account(0,firstName,lastName,email, password, phone, 0f)
-
             // Add Data in Database
             mAccountViewModel.addAccount(account)
             Toast.makeText(requireContext(), "Successfully added", Toast.LENGTH_LONG).show()

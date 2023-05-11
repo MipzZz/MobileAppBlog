@@ -1,9 +1,11 @@
-package com.example.firstapp.DB
+package com.example.firstapp.DB.Viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.firstapp.DB.AccountDatabase
+import com.example.firstapp.DB.Repositories.AccountRepository
 import com.example.firstapp.DB.Entities.Account
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

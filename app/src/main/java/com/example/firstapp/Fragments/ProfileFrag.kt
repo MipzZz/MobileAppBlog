@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import com.example.firstapp.DB.AccountViewModel
+import com.example.firstapp.DB.Viewmodels.AccountViewModel
 import com.example.firstapp.LifecycleData.LifeData
 import com.example.firstapp.LifecycleData.Transition
 import com.example.firstapp.databinding.FragmentProfileBinding
@@ -33,7 +33,6 @@ class ProfileFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val userId = lifeData.userId
         binding.btProfileBack.setOnClickListener {
            parentFragmentManager.popBackStack()
         }
